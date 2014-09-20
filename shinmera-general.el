@@ -21,12 +21,13 @@
 ;;;;;;
 ;; Configure generals
 (powerline-default-theme)
+(setq-default 
+ indent-tabs-mode               nil)
 (setq
  inhibit-startup-screen         t
  show-paren-delay               0
  ido-enable-flex-matching       t
  ido-everywhere                 t
- indent-tabs-mode               nil
  enable-local-variables         :safe
  linum-format                   "%d "
  browse-url-browser-function    'browse-url-generic
