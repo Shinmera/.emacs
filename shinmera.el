@@ -14,3 +14,4 @@
 (require 'shinmera-eiffel)
 (require 'shinmera-tex)
 (require 'shinmera-web)
+(require 'shinmera-matlab)
