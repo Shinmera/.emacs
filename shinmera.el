@@ -8,6 +8,7 @@
 (require 'shinmera-functions)
 (require 'shinmera-ecb)
 (require 'shinmera-paste)
+(require 'shinmera-windows)
 (require 'shinmera-keys)
 ;; Code
 (require 'shinmera-lisp)
