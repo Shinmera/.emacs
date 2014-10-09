@@ -78,6 +78,10 @@
 (add-hook 'slime-repl-mode-hook               #'enable-paredit-mode)
 (add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
 
+(put 'paredit-forward-delete 'delete-selection 'supersede)
+(put 'paredit-backward-delete 'delete-selection 'supersede)
+(put 'paredit-newline 'delete-selection t)
+
 ;;;;;;
 ;; Elisp
 (add-hook 'emacs-lisp-mode-hook               #'flyspell-prog-mode)
