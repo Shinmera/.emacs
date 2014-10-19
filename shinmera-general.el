@@ -10,7 +10,6 @@
 (require 'multiple-cursors)
 (require 'expand-region)
 (require 'auto-complete)
-(require 'uim)
 (require 'powerline)
 
 ;;;;;;
@@ -41,9 +40,7 @@
  ring-bell-function             'ignore
  ispell-dictionary               "british"
  backup-directory-alist          '((".*" . "~/.saves/"))
- vc-follow-symlinks              t
- uim-default-im-engine           "anthy"
- uim-lang-code-alist             (cons '("Japanese" "Japanese" utf-8 "UTF-8") (delete (assoc "Japanese" uim-lang-code-alist) uim-lang-code-alist)))
+ vc-follow-symlinks              t)
 
 ;;;;;;
 ;; Windowed system extra settings
