@@ -1,5 +1,8 @@
 (provide 'shinmera-web)
 
+(when (featurep 'shinmera-package)
+  (ensure-installed 'rainbow-mode 'web-mode))
+
 ;;;;;;
 ;; Configure web-mode and other things.
 (autoload 'rainbow-mode "rainbow-mode" "Rainbow colors" t)

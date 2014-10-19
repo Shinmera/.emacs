@@ -1,5 +1,10 @@
 (provide 'shinmera-general)
 
+(when (featurep 'shinmera-package)
+  (ensure-installed
+   'multiple-cursors 'expand-region 'auto-complete
+   'powerline 'sublime-themes 'markdown-mode))
+
 ;;;;;;
 ;; Load global prerequisites
 (require 'multiple-cursors)
@@ -24,6 +29,7 @@
 (setq-default 
  indent-tabs-mode               nil)
 (setq
+ ac-delay                       0.1
  inhibit-startup-screen         t
  show-paren-delay               0
  ido-enable-flex-matching       t

@@ -1,5 +1,8 @@
 (provide 'shinmera-tex)
 
+(when (featurep 'shinmera-package)
+  (ensure-installed 'auctex))
+
 ;;;;;;
 ;; Set up TeX and AUCTeX
 (autoload 'auctex-mode "tex" "LaTeX Editing Mode" t nil)

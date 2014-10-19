@@ -1,5 +1,8 @@
 (provide 'shinmera-matlab)
 
+(when (featurep 'shinmera-package)
+  (ensure-installed 'matlab-mode))
+
 ;;;;;;
 ;; Autoloads
 (autoload 'matlab-mode "matlab" "Matlab Editing Mode" t)
