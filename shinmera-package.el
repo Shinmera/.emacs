@@ -10,17 +10,20 @@
 ;;;;;;;
 ;; Autoinstall packages
 (require 'cl)
-(defvar *prelude-packages*
-  '(multiple-cursors expand-region auto-complete ecb
-    web-mode slime ac-slime paredit sublime-themes powerline
-    auctex markdown-mode rainbow-mode))
+(defvar *package-lists-fetched* nil)
 
-(defun prelude-packages-installed-p ()
-  (loop for package in *prelude-packages*
+(defun soft-fetch-package-lists ()
+  (unless *package-lists-fetched*
+    (package-refresh-contents)
+    (setf *package-lists-fetched* t)))
+
+(defun packages-installed-p (&rest packages)
+  (loop for package in packages
         always (package-installed-p package)))
 
-(unless (prelude-packages-installed-p)
-  (package-refresh-contents)
-  (dolist (package *prelude-packages*)
-    (when (not (package-installed-p package))
-      (package-install package))))
+(defun ensure-installed (&rest packages)
+  (unless (apply #'packages-installed-p packages)
+    (soft-fetch-package-lists)
+    (dolist (package packages)
+      (unless (package-installed-p package)
+        (package-install package)))))
