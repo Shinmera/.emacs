@@ -3,7 +3,7 @@
 (when (featurep 'shinmera-package)
   (ensure-installed
    'multiple-cursors 'expand-region 'auto-complete
-   'powerline 'sublime-themes 'markdown-mode))
+   'powerline 'sublime-themes 'markdown-mode 'dired+))
 
 ;;;;;;
 ;; Load global prerequisites
@@ -11,6 +11,7 @@
 (require 'expand-region)
 (require 'auto-complete)
 (require 'powerline)
+(require 'server)
 
 ;;;;;;
 ;; Activate default modes
@@ -41,6 +42,8 @@
  ispell-dictionary               "british"
  backup-directory-alist          '((".*" . "~/.saves/"))
  vc-follow-symlinks              t)
+(autoload 'dired "dired+" "Dired+" t)
+(put 'upcase-region 'disabled nil)
 
 ;;;;;;
 ;; Windowed system extra settings
@@ -48,7 +51,11 @@
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
   (load-theme 'spolsky t)
-  (set-default-font "Consolas-10")  
+  (set-default-font "Consolas-10"))
+
+;;;;;;
+;; So that we may use emacsclient.
+(unless (server-running-p)
   (server-start))
 
 ;;;;;;
