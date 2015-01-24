@@ -5,6 +5,7 @@
 
 ;;;;;;
 ;; SLIME
+(require 'cl-lib)
 (require 'slime-autoloads)
 
 (autoload 'slime "ac-slime" "Slime AutoComplete" t)
@@ -15,14 +16,6 @@
                slime-mrepl slime-indentation slime-repl slime-media))
 
 (setq
- slime-lisp-implementations                   '((sbcl  ("/usr/bin/sbcl")
-                                                       :coding-system utf-8-unix)
-                                                (clisp ("/usr/bin/clisp"))
-                                                (abcl  ("/usr/bin/abcl"))
-                                                (ccl32 ("/usr/bin/ccl"))
-                                                (ccl   ("/usr/bin/ccl64"))
-                                                (cmucl ("/usr/bin/cmucl" "-quiet"))
-                                                (ecl   ("/usr/bin/ecl")))
  lisp-indent-function                         'common-lisp-indent-function
  slime-complete-symbol-function               'slime-fuzzy-complete-symbol
  slime-net-coding-system                      'utf-8-unix
@@ -56,15 +49,30 @@
 
 (defun override-slime-repl-bindings-with-paredit ()
   (define-key slime-repl-mode-map
-    (read-kbd-macro paredit-backward-delete-key) nil))
+      (read-kbd-macro paredit-backward-delete-key) nil))
 
-(defun sbcl () (interactive) (slime 'sbcl))
-(defun ccl () (interactive) (slime 'ccl))
-(defun ccl32 () (interactive) (slime 'ccl32))
-(defun cmucl () (interactive) (slime 'cmucl))
-(defun abcl () (interactive) (slime 'abcl))
-(defun clisp () (interactive) (slime 'clisp))
-(defun ecl () (interactive) (slime 'ecl))
+(defmacro define-lisp-implementations (&rest decl)
+  `(progn
+     ,@(cl-loop for (symbol . args) in decl
+                collect `(progn
+                           (defun ,symbol ()
+                             (interactive)
+                             (slime ',symbol))
+                           (cl-pushnew '(,symbol ,@args) slime-lisp-implementations
+                                       :key 'car)))))
+
+(define-lisp-implementations
+  (sbcl  ("/usr/bin/sbcl")
+         :coding-system utf-8-unix)
+  (clisp ("/usr/bin/clisp"))
+  (abcl  ("/usr/bin/abcl"))
+  (ccl32 ("/usr/bin/ccl"))
+  (ccl   ("/usr/bin/ccl64"))
+  (cmucl ("/usr/bin/cmucl" "-quiet"))
+  (ecl   ("/usr/bin/ecl"))
+  (mkcl  ("/usr/bin/mkcl"))
+  (xcl   ("/usr/bin/xcl"))
+  (clasp ("/usr/bin/clasp")))
 
 (when window-system
   (slime))
