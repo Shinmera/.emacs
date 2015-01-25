@@ -62,8 +62,6 @@
                                        :key 'car)))))
 
 (define-lisp-implementations
-  (sbcl  ("/usr/bin/sbcl")
-         :coding-system utf-8-unix)
   (clisp ("/usr/bin/clisp"))
   (abcl  ("/usr/bin/abcl"))
   (ccl32 ("/usr/bin/ccl"))
@@ -72,7 +70,9 @@
   (ecl   ("/usr/bin/ecl"))
   (mkcl  ("/usr/bin/mkcl"))
   (xcl   ("/usr/bin/xcl"))
-  (clasp ("/usr/bin/clasp")))
+  (clasp ("/usr/bin/clasp"))
+  (sbcl  ("/usr/bin/sbcl")
+         :coding-system utf-8-unix))
 
 (when window-system
   (slime))
