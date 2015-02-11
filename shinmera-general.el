@@ -51,7 +51,8 @@
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
   (load-theme 'spolsky t)
-  (set-default-font "Consolas-10"))
+  ;; (set-default-font "Triplicate T4c-10.15")
+  )
 
 ;;;;;;
 ;; So that we may use emacsclient.
