@@ -37,7 +37,7 @@
  enable-local-variables         :safe
  linum-format                   "%d "
  browse-url-browser-function    'browse-url-generic
- browse-url-generic-program     "chromium"
+ browse-url-generic-program     (or (getenv "BROWSER") "xdg-open")
  ring-bell-function             'ignore
  ispell-dictionary               "british"
  backup-directory-alist          '((".*" . "~/.saves/"))
