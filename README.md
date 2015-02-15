@@ -55,11 +55,11 @@ Installing
 ----------
 1. You need at least emacs 24 or higher.
 2. `mkdir -p ~/.emacs.d/shinmera && git clone https://github.com/Shinmera/.emacs.git ~/.emacs.d/shinmera`
-3. `echo "\n(add-to-list 'load-path \"~/.emacs.d/shinmera/\")" >> ~/.emacs`
+3. `echo "(add-to-list 'load-path \"~/.emacs.d/shinmera/\")" >> ~/.emacs`
 
 Using the Files Standalone
 --------------------------
-1. `echo "\n(require 'shinmera)" >> ~/.emacs`
+1. `echo "(require 'shinmera)" >> ~/.emacs`
 2. Launch emacs and wait for it to download and install all packages. It'll take some time and pop up warnings during compilation most likely. You can safely ignore them. Once it's done, restart emacs again and you should be set to go.
 
 Using Just Parts
