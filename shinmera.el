@@ -17,3 +17,4 @@
 (require 'shinmera-tex)
 (require 'shinmera-web)
 (require 'shinmera-matlab)
+(require 'shinmera-haskell)
