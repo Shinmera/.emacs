@@ -34,7 +34,7 @@
  show-paren-delay               0
  ido-enable-flex-matching       t
  ido-everywhere                 t
- enable-local-variables         :safe
+ enable-local-variables         :all
  linum-format                   "%d "
  browse-url-browser-function    'browse-url-generic
  browse-url-generic-program     (or (getenv "BROWSER") "xdg-open")
