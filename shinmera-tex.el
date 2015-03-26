@@ -20,6 +20,9 @@
  TeX-view-program-list                '(("Okular" "okular --unique %o#src:%n%b"))
  TeX-view-program-selection           '((output-pdf "Okular")))
 
+(setq-default
+ TeX-engine                           'luatex)
+
 (eval-after-load "tex"   '(progn
                            (add-to-list 'TeX-command-list
                             '("Glossary" "makeglossaries %s" TeX-run-command nil
