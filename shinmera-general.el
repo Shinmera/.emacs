@@ -3,7 +3,8 @@
 (when (featurep 'shinmera-package)
   (ensure-installed
    'multiple-cursors 'expand-region 'auto-complete
-   'powerline 'sublime-themes 'markdown-mode 'dired+))
+   'powerline 'sublime-themes 'markdown-mode 'dired+
+   'openwith))
 
 ;;;;;;
 ;; Load global prerequisites
@@ -22,6 +23,7 @@
 (semantic-mode 1)
 (delete-selection-mode 1)
 (global-linum-mode 1)
+(openwith-mode t)
 
 ;;;;;;
 ;; Configure generals
@@ -41,7 +43,13 @@
  ring-bell-function             'ignore
  ispell-dictionary               "british"
  backup-directory-alist          '((".*" . "~/.saves/"))
- vc-follow-symlinks              t)
+ vc-follow-symlinks              t
+ openwith-associations          '(("\\.png\\'" "gthumb" (file))
+                                  ("\\.jpg\\'" "gthumb" (file))
+                                  ("\\.jpeg\\'" "gthumb" (file))
+                                  ("\\.gif\\'" "gthumb" (file))
+                                  ("\\.csv\\'" "gthumb" (file))
+                                  ("\\.pdf\\'" "okular" (file))))
 (autoload 'dired "dired+" "Dired+" t)
 (put 'upcase-region 'disabled nil)
 
