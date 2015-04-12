@@ -21,15 +21,14 @@
                                  (define-key haskell-mode-map (kbd "C-c C-n C-c") 'haskell-process-cabal-build)
                                  (define-key haskell-mode-map (kbd "C-c C-n c") 'haskell-process-cabal)
                                  (define-key haskell-mode-map (kbd "SPC") 'haskell-mode-contextual-space)
-                                 (define-key haskell-mode-map (kbd "C-c C-o") 'haskell-compile)))
+                                 (define-key haskell-mode-map (kbd "C-c C-o") 'haskell-compile)
+                                 (define-key haskell-mode-map (kbd "C-x C-s") 'haskell-mode-save-buffer)))
 (eval-after-load 'haskell-cabal '(progn
                                   (define-key haskell-cabal-mode-map (kbd "C-c C-z") 'haskell-interactive-switch)
                                   (define-key haskell-cabal-mode-map (kbd "C-c C-k") 'haskell-interactive-mode-clear)
                                   (define-key haskell-cabal-mode-map (kbd "C-c C-c") 'haskell-process-cabal-build)
                                   (define-key haskell-cabal-mode-map (kbd "C-c c") 'haskell-process-cabal)
                                   (define-key haskell-cabal-mode-map (kbd "C-c C-o") 'haskell-compile)))
-
-(define-key haskell-mode-map (kbd "C-x C-s") 'haskell-mode-save-buffer)
 
 (let ((cabal-path (expand-file-name "~/.cabal/bin")))
   (setenv "PATH" (concat cabal-path ":" (getenv "PATH")))
