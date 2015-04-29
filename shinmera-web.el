@@ -1,4 +1,5 @@
 (provide 'shinmera-web)
+(require 'shinmera-package)
 
 (when (featurep 'shinmera-package)
   (ensure-installed 'rainbow-mode 'web-mode))

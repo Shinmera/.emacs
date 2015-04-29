@@ -1,4 +1,5 @@
 (provide 'shinmera-haskell)
+(require 'shinmera-package)
 
 (when (featurep 'shinmera-package)
   (ensure-installed 'haskell-mode))

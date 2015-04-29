@@ -1,4 +1,5 @@
 (provide 'shinmera-general)
+(require 'shinmera-package)
 
 (when (featurep 'shinmera-package)
   (ensure-installed

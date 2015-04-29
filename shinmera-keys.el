@@ -1,4 +1,5 @@
 (provide 'shinmera-keys)
+(require 'shinmera-general)
 
 ;;;;;;
 ;; Extra keybindings

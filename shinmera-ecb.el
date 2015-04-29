@@ -1,4 +1,5 @@
 (provide 'shinmera-ecb)
+(require 'shinmera-package)
 
 (when (featurep 'shinmera-package)
   (ensure-installed 'ecb))

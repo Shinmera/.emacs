@@ -1,4 +1,5 @@
 (provide 'shinmera-lisp)
+(require 'shinmera-package)
 
 (when (featurep 'shinmera-package)
   (ensure-installed 'auto-complete 'slime 'ac-slime 'paredit))

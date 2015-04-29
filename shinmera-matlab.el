@@ -1,4 +1,5 @@
 (provide 'shinmera-matlab)
+(require 'shinmera-package)
 
 (when (featurep 'shinmera-package)
   (ensure-installed 'matlab-mode))
