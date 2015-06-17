@@ -63,17 +63,17 @@
                                        :key 'car)))))
 
 (define-lisp-implementations
-  (abcl  ("/usr/bin/abcl"))
-  (acl   ("/usr/bin/alisp"))
-  (ccl32 ("/usr/bin/ccl"))
-  (ccl   ("/usr/bin/ccl64"))
-  (clasp ("/usr/bin/clasp"))
-  (clisp ("/usr/bin/clisp"))
-  (cmucl ("/usr/bin/cmucl" "-quiet"))
-  (ecl   ("/usr/bin/ecl"))
-  (mkcl  ("/usr/bin/mkcl"))
-  (xcl   ("/usr/bin/xcl"))
-  (sbcl  ("/usr/bin/sbcl")
+  (abcl  ("abcl"))
+  (acl   ("alisp"))
+  (ccl32 ("ccl"))
+  (ccl   ("ccl64"))
+  (clasp ("clasp"))
+  (clisp ("clisp"))
+  (cmucl ("cmucl" "-quiet"))
+  (ecl   ("ecl"))
+  (mkcl  ("mkcl"))
+  (xcl   ("xcl"))
+  (sbcl  ("sbcl")
          :coding-system utf-8-unix))
 
 (when window-system
