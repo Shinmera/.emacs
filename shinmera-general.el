@@ -81,7 +81,8 @@
 
 ;;;;;;
 ;; So that we may use emacsclient.
-(unless (server-running-p)
+(unless (or (server-running-p)
+            (eq system-type 'windows-nt))
   (server-start))
 
 ;;;;;;
