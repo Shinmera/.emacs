@@ -55,14 +55,29 @@
 (autoload 'dired "dired+" "Dired+" t)
 (put 'upcase-region 'disabled nil)
 
+(defun add-to-path (&rest things)
+  (setenv "PATH" (concat (getenv "PATH") ":" (mapconcat 'identity things ":")))
+  (setq exec-path (append exec-path things)))
+
 ;;;;;;
 ;; Windowed system extra settings
 (when window-system
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
-  (load-theme 'spolsky t)
-  ;; (set-default-font "Triplicate T4c-10.15")
-  )
+  (load-theme 'spolsky t))
+
+;;;;;;
+;; OS X
+(when (eq system-type 'darwin)
+  (setq mac-command-modifier 'control)
+  (setq ns-function-modifier 'super)
+  (setq ns-right-alternate-modifier nil)
+  (add-to-path "/opt/local/bin"))
+
+;;;;;;
+;; Linux
+(when (eq system-type 'linux)
+  (add-to-path "/usr/local/bin"))
 
 ;;;;;;
 ;; So that we may use emacsclient.
