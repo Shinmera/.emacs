@@ -1,3 +1,4 @@
+;; -*- mode: elisp; lexical-binding: t; -*-
 (provide 'shinmera-lisp)
 (require 'shinmera-package)
 
@@ -91,8 +92,8 @@
 (put 'paredit-backward-delete 'delete-selection 'supersede)
 (put 'paredit-newline 'delete-selection t)
 
-;; Fix the spacing for macros, such as #p, etc.
-(defvar known-macro-characters ())
+;; Fix the spacing for macro characters such as #p, etc.
+(defvar known-macro-characters (make-hash-table))
 
 (defun determine-cl-macro-character (macro-char)
   (when (slime-connected-p)
@@ -101,15 +102,16 @@
        (cl:not (cl:null (cl:get-macro-character
                          (cl:code-char ,macro-char)))))
      (lambda (result)
-       (when result
-         (add-to-list 'known-macro-characters macro-char))))))
+       (puthash macro-char result known-macro-characters)))))
 
 (defun cl-macro-character-p (macro-char)
-  (or
-   (find macro-char known-macro-characters)
-   (progn (determine-cl-macro-character macro-char) nil)
-   ;; Don't know the result (yet), determine statically.
-   (eql macro-char ?#)))
+  (pcase (gethash macro-char known-macro-characters :not-found)
+         (`t t)
+         (`nil nil)
+         (:not-found
+          (determine-cl-macro-character macro-char)
+          (or ;; Don't know the result (yet), determine statically.
+           (eql macro-char ?#)))))
 
 (defun paredit-detect-cl-macro-character (endp delimiter)
   (when (find major-mode '(slime-repl-mode lisp-mode))
