@@ -75,9 +75,6 @@
   (xcl   ("xcl"))
   (sbcl  ("sbcl")))
 
-(when window-system
-  (slime))
-
 ;;;;;;
 ;; Paredit
 (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
@@ -124,9 +121,9 @@
                      (cl-macro-character-p (char-before (1- (point))))))))
         t)))
 
-(add-to-list 'paredit-space-for-delimiter-predicates
-             #'paredit-detect-cl-macro-character)
-
+(with-eval-after-load 'paredit
+  (add-to-list 'paredit-space-for-delimiter-predicates
+               #'paredit-detect-cl-macro-character))
 
 ;;;;;;
 ;; Elisp
