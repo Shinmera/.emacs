@@ -73,8 +73,7 @@
   (ecl   ("ecl"))
   (mkcl  ("mkcl"))
   (xcl   ("xcl"))
-  (sbcl  ("sbcl")
-         :coding-system utf-8-unix))
+  (sbcl  ("sbcl")))
 
 (when window-system
   (slime))
@@ -94,6 +93,28 @@
 (put 'paredit-forward-delete 'delete-selection 'supersede)
 (put 'paredit-backward-delete 'delete-selection 'supersede)
 (put 'paredit-newline 'delete-selection t)
+
+;; Fix the spacing for dispatch macros, such as #p, etc.
+(defun dispatch-macro-character-p (disp sub)
+  (or
+   (and (slime-connected-p)
+        (slime-eval `(cl:ignore-errors (cl:not (cl:null (cl:get-dispatch-macro-character (cl:code-char ,disp) (cl:code-char ,sub)))))))
+   ;; Not connected, determine statically by just "knowing".
+   (eql disp ?#)))
+
+(defun paredit-detect-dispatch-macro (endp delimiter)
+  (when (find major-mode '(slime-repl-mode lisp-mode))
+    (if (not endp)
+        (save-excursion
+         (let ((1-back (char-before (point)))
+               (2-back (char-before (- (point) 1))))
+           (null
+            (dispatch-macro-character-p 2-back 1-back))))
+        t)))
+
+(add-to-list 'paredit-space-for-delimiter-predicates
+             #'paredit-detect-dispatch-macro)
+
 
 ;;;;;;
 ;; Elisp
