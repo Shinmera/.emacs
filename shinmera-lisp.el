@@ -94,26 +94,38 @@
 (put 'paredit-backward-delete 'delete-selection 'supersede)
 (put 'paredit-newline 'delete-selection t)
 
-;; Fix the spacing for dispatch macros, such as #p, etc.
-(defun dispatch-macro-character-p (disp sub)
-  (or
-   (and (slime-connected-p)
-        (slime-eval `(cl:ignore-errors (cl:not (cl:null (cl:get-dispatch-macro-character (cl:code-char ,disp) (cl:code-char ,sub)))))))
-   ;; Not connected, determine statically by just "knowing".
-   (eql disp ?#)))
+;; Fix the spacing for macros, such as #p, etc.
+(defvar known-macro-characters ())
 
-(defun paredit-detect-dispatch-macro (endp delimiter)
+(defun determine-cl-macro-character (macro-char)
+  (when (slime-connected-p)
+    (slime-eval-async
+     `(cl:ignore-errors
+       (cl:not (cl:null (cl:get-macro-character
+                         (cl:code-char ,macro-char)))))
+     (lambda (result)
+       (when result
+         (add-to-list 'known-macro-characters macro-char))))))
+
+(defun cl-macro-character-p (macro-char)
+  (or
+   (find macro-char known-macro-characters)
+   (progn (determine-cl-macro-character macro-char) nil)
+   ;; Don't know the result (yet), determine statically.
+   (eql macro-char ?#)))
+
+(defun paredit-detect-cl-macro-character (endp delimiter)
   (when (find major-mode '(slime-repl-mode lisp-mode))
     (if (not endp)
         (save-excursion
          (let ((1-back (char-before (point)))
                (2-back (char-before (- (point) 1))))
-           (null
-            (dispatch-macro-character-p 2-back 1-back))))
+           (null (or (cl-macro-character-p (char-before (point)))
+                     (cl-macro-character-p (char-before (1- (point))))))))
         t)))
 
 (add-to-list 'paredit-space-for-delimiter-predicates
-             #'paredit-detect-dispatch-macro)
+             #'paredit-detect-cl-macro-character)
 
 
 ;;;;;;
