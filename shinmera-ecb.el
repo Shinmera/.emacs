@@ -25,8 +25,3 @@
                            "~/quicklisp/dists/quicklisp/software"
                            "/usr/share/sbcl-source")
  ecb-tree-buffer-style   'ascii-guides)
-
-;;;;;;
-;; Autoload on windowed
-(when window-system
-  (ecb-activate))

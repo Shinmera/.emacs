@@ -44,3 +44,7 @@
     (find-alternate-file (concat "/sudo::"
                                  (buffer-file-name (current-buffer))))
     (goto-char position)))
+
+(defun add-to-path (&rest things)
+  (setenv "PATH" (concat (getenv "PATH") ":" (mapconcat 'identity things ":")))
+  (setq exec-path (append exec-path things)))

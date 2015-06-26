@@ -1,5 +1,6 @@
 (provide 'shinmera-general)
 (require 'shinmera-package)
+(require 'shinmera-functions)
 
 (when (featurep 'shinmera-package)
   (ensure-installed
@@ -55,10 +56,6 @@
 (autoload 'dired "dired+" "Dired+" t)
 (put 'upcase-region 'disabled nil)
 
-(defun add-to-path (&rest things)
-  (setenv "PATH" (concat (getenv "PATH") ":" (mapconcat 'identity things ":")))
-  (setq exec-path (append exec-path things)))
-
 ;;;;;;
 ;; Windowed system extra settings
 (when window-system
@@ -78,12 +75,6 @@
 ;; Linux
 (when (eq system-type 'linux)
   (add-to-path "/usr/local/bin"))
-
-;;;;;;
-;; So that we may use emacsclient.
-(unless (or (server-running-p)
-            (eq system-type 'windows-nt))
-  (server-start))
 
 ;;;;;;
 ;; AC global

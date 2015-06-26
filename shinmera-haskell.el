@@ -1,5 +1,6 @@
 (provide 'shinmera-haskell)
 (require 'shinmera-package)
+(require 'shinmera-functions)
 
 (when (featurep 'shinmera-package)
   (ensure-installed 'haskell-mode))
@@ -31,6 +32,4 @@
                                   (define-key haskell-cabal-mode-map (kbd "C-c c") 'haskell-process-cabal)
                                   (define-key haskell-cabal-mode-map (kbd "C-c C-o") 'haskell-compile)))
 
-(let ((cabal-path (expand-file-name "~/.cabal/bin")))
-  (setenv "PATH" (concat cabal-path ":" (getenv "PATH")))
-  (add-to-list 'exec-path cabal-path))
+(add-to-path (expand-file-name "~/.cabal/bin"))

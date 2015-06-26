@@ -19,3 +19,5 @@
 (require 'shinmera-matlab)
 (require 'shinmera-haskell)
 (require 'shinmera-js)
+;; Last
+(require 'shinmera-startup)
