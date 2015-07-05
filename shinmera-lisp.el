@@ -76,6 +76,12 @@
   (xcl   ("xcl"))
   (sbcl  ("sbcl")))
 
+(defun set-default-lisp-implementation (impl)
+  (let ((impl (cl-assoc impl slime-lisp-implementations)))
+    (setq slime-lisp-implementations
+          (cl-remove impl slime-lisp-implementations))
+    (push impl slime-lisp-implementations)))
+
 ;;;;;;
 ;; Paredit
 (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
