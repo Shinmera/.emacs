@@ -63,18 +63,27 @@
                            (cl-pushnew '(,symbol ,@args) slime-lisp-implementations
                                        :key 'car)))))
 
-(define-lisp-implementations
-  (abcl  ("abcl"))
-  (acl   ("alisp"))
-  (ccl32 ("ccl"))
-  (ccl   ("ccl64"))
-  (clasp ("clasp"))
-  (clisp ("clisp"))
-  (cmucl ("cmucl" "-quiet"))
-  (ecl   ("ecl"))
-  (mkcl  ("mkcl"))
-  (xcl   ("xcl"))
-  (sbcl  ("sbcl")))
+(when (or (eq system-type 'gnu/linux)
+          (eq system-type 'darwin))
+  (define-lisp-implementations
+    (abcl  ("abcl"))
+    (acl   ("alisp"))
+    (ccl32 ("ccl"))
+    (ccl   ("ccl64"))
+    (clasp ("clasp"))
+    (clisp ("clisp"))
+    (cmucl ("cmucl" "-quiet"))
+    (ecl   ("ecl"))
+    (mkcl  ("mkcl"))
+    (xcl   ("xcl"))
+    (sbcl  ("sbcl"))))
+
+(when (eq system-type 'windows-nt)
+  (define-lisp-implementations
+    (ccl   ("wx86cl64.exe"))
+    (ccl32 ("wx86cl.exe"))
+    (clisp ("clisp.exe"))
+    (sbcl  ("sbcl.exe"))))
 
 (defun set-default-lisp-implementation (impl)
   (let ((impl (cl-assoc impl slime-lisp-implementations)))
