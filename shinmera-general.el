@@ -69,6 +69,9 @@
   (setq mac-command-modifier 'control)
   (setq ns-function-modifier 'super)
   (setq ns-right-alternate-modifier nil)
+  ;; brew
+  (add-to-path "/usr/local/bin")
+  ;; ports
   (add-to-path "/opt/local/bin"))
 
 ;;;;;;
