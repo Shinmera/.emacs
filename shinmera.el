@@ -7,6 +7,7 @@
 (require 'shinmera-general)
 (require 'shinmera-functions)
 (require 'shinmera-ecb)
+(require 'shinmera-magit)
 (require 'shinmera-paste)
 (require 'shinmera-windows)
 (require 'shinmera-uim)

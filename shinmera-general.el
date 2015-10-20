@@ -6,7 +6,7 @@
   (ensure-installed
    'multiple-cursors 'expand-region 'auto-complete
    'powerline 'sublime-themes 'markdown-mode 'dired+
-   'openwith 'magit))
+   'openwith))
 
 ;;;;;;
 ;; Load global prerequisites
@@ -51,8 +51,7 @@
                                   ("\\.jpeg\\'" "gthumb" (file))
                                   ("\\.gif\\'" "gthumb" (file))
                                   ("\\.csv\\'" "gthumb" (file))
-                                  ("\\.pdf\\'" "okular" (file)))
- magit-last-seen-setup-instructions "1.4.0")
+                                  ("\\.pdf\\'" "okular" (file))))
 (autoload 'dired "dired+" "Dired+" t)
 (put 'upcase-region 'disabled nil)
 
