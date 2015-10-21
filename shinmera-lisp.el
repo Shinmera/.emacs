@@ -13,12 +13,11 @@
 (autoload 'slime "ac-slime" "Slime AutoComplete" t)
 (autoload 'hyperspec-lookup "clhs-use-local" t)
 
-(slime-setup '(slime-fancy slime-asdf slime-sprof
+(slime-setup '(slime-fancy slime-asdf slime-sprof slime-mdot-fu
                slime-compiler-notes-tree slime-hyperdoc
-               slime-mrepl slime-indentation slime-repl slime-media))
+               slime-indentation slime-repl))
 
 (setq
- lisp-indent-function                         'common-lisp-indent-function
  slime-complete-symbol-function               'slime-fuzzy-complete-symbol
  slime-net-coding-system                      'utf-8-unix
  slime-startup-animation                      nil
@@ -29,13 +28,14 @@
  slime-asdf-collect-notes                     t
  slime-inhibit-pipelining                     nil
  slime-load-failed-fasl                       'always
- lisp-loop-indent-subclauses                  nil
  slime-when-complete-filename-expand          t
  slime-repl-history-remove-duplicates         t
  slime-repl-history-trim-whitespaces          t
+ slime-export-symbol-representation-auto      t
+ lisp-indent-function                         'common-lisp-indent-function
+ lisp-loop-indent-subclauses                  nil
  lisp-loop-indent-forms-like-keywords         t
- lisp-lambda-list-keyword-parameter-alignment t
- slime-export-symbol-representation-auto      t)
+ lisp-lambda-list-keyword-parameter-alignment t)
 
 (add-hook 'slime-mode-hook                    #'flyspell-prog-mode)
 (add-hook 'slime-mode-hook                    #'set-up-slime-ac)
