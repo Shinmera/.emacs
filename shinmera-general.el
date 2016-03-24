@@ -43,15 +43,16 @@
  browse-url-browser-function    'browse-url-generic
  browse-url-generic-program     (or (getenv "BROWSER") "xdg-open")
  ring-bell-function             'ignore
- ispell-dictionary               "british"
- backup-directory-alist          '((".*" . "~/.saves/"))
- vc-follow-symlinks              t
+ ispell-dictionary              "british"
+ backup-directory-alist         '((".*" . "~/.saves/"))
+ vc-follow-symlinks             t
  openwith-associations          '(("\\.png\\'" "gthumb" (file))
                                   ("\\.jpg\\'" "gthumb" (file))
                                   ("\\.jpeg\\'" "gthumb" (file))
                                   ("\\.gif\\'" "gthumb" (file))
                                   ("\\.csv\\'" "gthumb" (file))
-                                  ("\\.pdf\\'" "okular" (file))))
+                                  ("\\.pdf\\'" "okular" (file)))
+ pop-up-frame-function          (lambda () (split-window-right)))
 (autoload 'dired "dired+" "Dired+" t)
 (put 'upcase-region 'disabled nil)
 
