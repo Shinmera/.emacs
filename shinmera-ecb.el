@@ -18,10 +18,11 @@
                            (nil "C-x s" ecb-goto-window-sources))
  ecb-layout-name         "left2"
  ecb-layout-window-sizes '(("left2" (ecb-directories-buffer-name 0.2 . 0.5) (ecb-sources-buffer-name 0.2 . 0.5)))
- ecb-source-file-regexps '((".*" ("\\(^\\(\\.\\|#\\)\\|\\(~$\\|\\.\\(elc\\|obj\\|o\\|fasl\\|class\\|lib\\|dll\\|a\\|so\\|cache\\|out\\|aux\\|log\\|gz\\|pdf\\)$\\)\\)") ("^\\.\\(emacs\\|gnus\\)$")))
- ecb-source-path         '("~/"
-                           "~/Projects"
+ ecb-source-file-regexps '((".*" ("\\(^\\(\\.\\|#\\)\\|\\(~$\\|\\.\\(elc\\|o\\|fasl\\|class\\|lib\\|dll\\|a\\|so\\|cache\\|out\\|aux\\|gz\\)$\\)\\)")
+                                 ("^\\.\\(emacs\\|gnus\\)$")))
+ ecb-source-path         '("~/Projects"
                            "~/Documents"
+                           "~/"
                            "~/quicklisp/dists/quicklisp/software"
                            "/usr/share/sbcl-source")
  ecb-tree-buffer-style   'ascii-guides)
