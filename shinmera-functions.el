@@ -48,3 +48,10 @@
 (defun add-to-path (&rest things)
   (setenv "PATH" (concat (getenv "PATH") ":" (mapconcat 'identity things ":")))
   (setq exec-path (append exec-path things)))
+
+(defun kill-dired-buffers ()
+  (interactive)
+  (mapc (lambda (buffer) 
+          (when (eq 'dired-mode (buffer-local-value 'major-mode buffer)) 
+            (kill-buffer buffer))) 
+        (buffer-list)))
