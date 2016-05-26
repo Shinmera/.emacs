@@ -6,7 +6,7 @@
   (ensure-installed
    'multiple-cursors 'expand-region 'auto-complete
    'powerline 'sublime-themes 'markdown-mode 'dired+
-   'openwith))
+   'openwith 'smex))
 
 ;;;;;;
 ;; Load global prerequisites
@@ -15,6 +15,7 @@
 (require 'auto-complete)
 (require 'powerline)
 (require 'server)
+(require 'smex)
 
 ;;;;;;
 ;; Activate default modes
@@ -26,6 +27,7 @@
 (delete-selection-mode 1)
 (global-linum-mode 1)
 (openwith-mode t)
+(smex-initialize)
 
 ;;;;;;
 ;; Configure generals

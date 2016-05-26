@@ -27,6 +27,9 @@
 (define-my-key "C-o"           'uim-mode)
 (define-my-key "C-c d"         'toggle-window-dedication)
 
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+
 ;; Activate my-keys possibly everywhere
 (define-minor-mode my-keys-minor-mode
   "A minor mode so that my key settings override annoying major modes."
