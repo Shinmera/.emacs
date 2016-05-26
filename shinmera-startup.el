@@ -2,8 +2,10 @@
 
 (defun startup-shinmera ()
   (when window-system
-    (ecb-activate)
-    (slime))
+    (when (featurep 'slime)
+      (slime))
+    (when (featurep 'ecb)
+      (ecb-activate)))
 
   (unless (or (server-running-p)
               (eq system-type 'windows-nt))
