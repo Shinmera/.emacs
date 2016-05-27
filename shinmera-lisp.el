@@ -3,7 +3,7 @@
 (require 'shinmera-package)
 
 (when (featurep 'shinmera-package)
-  (ensure-installed 'auto-complete 'slime 'paredit))
+  (ensure-installed 'slime 'paredit))
 
 ;;;;;;
 ;; SLIME
@@ -12,11 +12,10 @@
 
 (autoload 'hyperspec-lookup "clhs-use-local" t)
 
-(slime-setup '(slime-fancy slime-asdf slime-sprof slime-mdot-fu
-               slime-compiler-notes-tree slime-hyperdoc
-               slime-indentation slime-repl))
-
 (setq
+ shinmera-slime-contribs '(slime-fancy slime-asdf slime-sprof slime-mdot-fu
+                           slime-compiler-notes-tree slime-hyperdoc
+                           slime-indentation slime-repl)
  slime-complete-symbol-function               'slime-fuzzy-complete-symbol
  slime-net-coding-system                      'utf-8-unix
  slime-startup-animation                      nil
@@ -58,28 +57,29 @@
                            (cl-pushnew '(,symbol ,@args) slime-lisp-implementations
                                        :key 'car)))))
 
-(when (or (eq system-type 'gnu/linux)
-          (eq system-type 'darwin))
-  (define-lisp-implementations
-    (abcl  ("abcl"))
-    (acl   ("alisp"))
-    (ccl32 ("ccl"))
-    (ccl   ("ccl64"))
-    (clasp ("clasp"))
-    (clisp ("clisp"))
-    (cmucl ("cmucl" "-quiet"))
-    (ecl   ("ecl"))
-    (mkcl  ("mkcl"))
-    (xcl   ("xcl"))
-    (sbcl  ("sbcl"))))
-
-(when (eq system-type 'windows-nt)
-  (define-lisp-implementations
-    (ccl   ("wx86cl64.exe"))
-    (ccl32 ("wx86cl.exe"))
-    (clisp ("clisp.exe"))
-    (sbcl  ("sbcl.exe"))))
-
+(with-eval-after-load "slime"
+  (when (or (eq system-type 'gnu/linux)
+            (eq system-type 'darwin))
+    (define-lisp-implementations
+      (abcl  ("abcl"))
+      (acl   ("alisp"))
+      (ccl32 ("ccl"))
+      (ccl   ("ccl64"))
+      (clasp ("clasp"))
+      (clisp ("clisp"))
+      (cmucl ("cmucl" "-quiet"))
+      (ecl   ("ecl"))
+      (mkcl  ("mkcl"))
+      (xcl   ("xcl"))
+      (sbcl  ("sbcl"))))
+  
+  (when (eq system-type 'windows-nt)
+    (define-lisp-implementations
+      (ccl   ("wx86cl64.exe"))
+      (ccl32 ("wx86cl.exe"))
+      (clisp ("clisp.exe"))
+      (sbcl  ("sbcl.exe")))))
+  
 (defun set-default-lisp-implementation (impl)
   (let ((impl (cl-assoc impl slime-lisp-implementations)))
     (setq slime-lisp-implementations
@@ -140,3 +140,30 @@
 ;;;;;;
 ;; Elisp
 (add-hook 'emacs-lisp-mode-hook               #'flyspell-prog-mode)
+
+;;;;;;
+;; Autocomplete
+(when (featurep 'shinmera-autocomplete)
+  (when (featurep 'shinmera-package)
+    (ensure-installed 'ac-slime))
+  
+  (autoload 'slime "ac-slime" "Slime AutoComplete" t)
+  (add-to-list 'ac-modes 'slime-repl-mode)
+  (add-hook 'slime-mode-hook #'set-up-slime-ac)
+  (add-hook 'slime-repl-mode-hook #'set-up-slime-ac))
+
+;;;;;
+;; Company
+(when (featurep 'shinmera-company)
+  (when (featurep 'shinmera-package)
+    (ensure-installed 'slime-company))
+  (push 'slime-company shinmera-slime-contribs)
+
+  (define-key company-active-map (kbd "\C-n") 'company-select-next)
+  (define-key company-active-map (kbd "\C-p") 'company-select-previous)
+  (define-key company-active-map (kbd "\C-d") 'company-show-doc-buffer)
+  (define-key company-active-map (kbd "M-.") 'company-show-location))
+
+;;;;;
+;; Setup slime
+(slime-setup shinmera-slime-contribs)
