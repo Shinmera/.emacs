@@ -3,14 +3,13 @@
 (require 'shinmera-package)
 
 (when (featurep 'shinmera-package)
-  (ensure-installed 'auto-complete 'slime 'ac-slime 'paredit))
+  (ensure-installed 'auto-complete 'slime 'paredit))
 
 ;;;;;;
 ;; SLIME
 (require 'cl-lib)
 (require 'slime-autoloads)
 
-(autoload 'slime "ac-slime" "Slime AutoComplete" t)
 (autoload 'hyperspec-lookup "clhs-use-local" t)
 
 (slime-setup '(slime-fancy slime-asdf slime-sprof slime-mdot-fu
@@ -38,12 +37,8 @@
  lisp-lambda-list-keyword-parameter-alignment t)
 
 (add-hook 'slime-mode-hook                    #'flyspell-prog-mode)
-(add-hook 'slime-mode-hook                    #'set-up-slime-ac)
-(add-hook 'slime-repl-mode-hook               #'set-up-slime-ac)
 (add-hook 'slime-repl-mode-hook               #'override-slime-repl-bindings-with-paredit)
 (add-hook 'slime-repl-mode-hook               #'set-slime-history-keys)
-
-(add-to-list 'ac-modes                        'slime-repl-mode)
 
 (defun set-slime-history-keys ()
   (local-set-key (kbd "C-x <up>") 'slime-repl-backward-input)

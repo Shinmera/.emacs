@@ -4,7 +4,7 @@
 
 (when (featurep 'shinmera-package)
   (ensure-installed
-   'multiple-cursors 'expand-region 'auto-complete
+   'multiple-cursors 'expand-region
    'powerline 'sublime-themes 'markdown-mode 'dired+
    'openwith 'smex))
 
@@ -12,7 +12,6 @@
 ;; Load global prerequisites
 (require 'multiple-cursors)
 (require 'expand-region)
-(require 'auto-complete)
 (require 'powerline)
 (require 'server)
 (require 'smex)
@@ -35,7 +34,6 @@
 (setq-default 
  indent-tabs-mode               nil)
 (setq
- ac-delay                       0.1
  inhibit-startup-screen         t
  show-paren-delay               0
  ido-enable-flex-matching       t
@@ -80,11 +78,3 @@
 ;; Linux
 (when (eq system-type 'linux)
   (add-to-path "/usr/local/bin"))
-
-;;;;;;
-;; AC global
-(define-globalized-minor-mode real-global-auto-complete-mode
-  auto-complete-mode (lambda ()
-                       (if (not (minibufferp (current-buffer)))
-                           (auto-complete-mode 1))))
-(real-global-auto-complete-mode t)
