@@ -49,7 +49,7 @@
   (cond ((eql system-type 'windows-nt)
          (setenv "PATH" (concat (mapconcat (lambda (a) (replace-regexp-in-string "/" "\\" a)) things ";")
                                 ";" (getenv "PATH"))))
-        (T
+        (t
          (setenv "PATH" (concat (mapconcat 'identity things ":")
                                 ":" (getenv "PATH")))))
   (setq exec-path (append exec-path things)))
