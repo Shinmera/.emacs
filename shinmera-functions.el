@@ -46,7 +46,12 @@
     (goto-char position)))
 
 (defun add-to-path (&rest things)
-  (setenv "PATH" (concat (getenv "PATH") ":" (mapconcat 'identity things ":")))
+  (cond ((eql system-type 'windows-nt)
+         (setenv "PATH" (concat (mapconcat (lambda (a) (replace-regexp-in-string "/" "\\" a)) things ";")
+                                ";" (getenv "PATH"))))
+        (T
+         (setenv "PATH" (concat (mapconcat 'identity things ":")
+                                ":" (getenv "PATH")))))
   (setq exec-path (append exec-path things)))
 
 (defun kill-dired-buffers ()
