@@ -47,7 +47,7 @@
 
 (defun add-to-path (&rest things)
   (cond ((eql system-type 'windows-nt)
-         (setenv "PATH" (concat (mapconcat (lambda (a) (replace-regexp-in-string "/" "\\" a)) things ";")
+         (setenv "PATH" (concat (mapconcat (lambda (a) (replace-regexp-in-string "/" "\\\\" a)) things ";")
                                 ";" (getenv "PATH"))))
         (t
          (setenv "PATH" (concat (mapconcat 'identity things ":")
