@@ -3,7 +3,7 @@
 (require 'shinmera-package)
 
 (when (featurep 'shinmera-package)
-  (ensure-installed 'slime 'paredit))
+  (ensure-installed 'slime 'paredit 'elisp-slime-nav))
 
 ;;;;;;
 ;; SLIME
@@ -139,6 +139,7 @@
 
 ;;;;;;
 ;; Elisp
+(require 'elisp-slime-nav)
 (add-hook 'emacs-lisp-mode-hook               #'flyspell-prog-mode)
 
 ;;;;;;
