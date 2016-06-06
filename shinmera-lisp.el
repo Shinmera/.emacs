@@ -140,7 +140,8 @@
 ;;;;;;
 ;; Elisp
 (require 'elisp-slime-nav)
-(add-hook 'emacs-lisp-mode-hook               #'flyspell-prog-mode)
+(add-hook 'emacs-lisp-mode-hook #'flyspell-prog-mode)
+(add-hook 'emacs-lisp-mode-hook #'elisp-slime-nav-mode)
 
 ;;;;;;
 ;; Autocomplete
