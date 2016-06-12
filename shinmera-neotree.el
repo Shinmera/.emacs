@@ -5,7 +5,7 @@
 (when (featurep 'shinmera-package)
   (ensure-installed 'neotree))
 
-(setq neo-smart-open t)
+(setq neo-smart-open nil)
 (setq neo-theme 'arrow)
 (setq neo-window-width 50)
 
