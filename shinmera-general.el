@@ -45,11 +45,12 @@
  ring-bell-function             'ignore
  backup-directory-alist         '((".*" . "~/.saves/"))
  vc-follow-symlinks             t
- openwith-associations          '(("\\.png\\'" "gthumb" (file))
-                                  ("\\.jpg\\'" "gthumb" (file))
-                                  ("\\.jpeg\\'" "gthumb" (file))
-                                  ("\\.gif\\'" "gthumb" (file))
-                                  ("\\.csv\\'" "gthumb" (file))
+ image-viewer                   "geeqie"
+ openwith-associations          `(("\\.png\\'" ,image-viewer (file))
+                                  ("\\.jpg\\'" ,image-viewer (file))
+                                  ("\\.jpeg\\'" ,image-viewer (file))
+                                  ("\\.gif\\'" ,image-viewer (file))
+                                  ("\\.svg\\'" ,image-viewer (file))
                                   ("\\.pdf\\'" "okular" (file)))
  pop-up-frame-function          (lambda () (split-window-right)))
 (autoload 'dired "dired+" "Dired+" t)
