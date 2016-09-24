@@ -16,6 +16,7 @@
 (require 'shinmera-uim)
 (require 'shinmera-spell)
 (require 'shinmera-keys)
+(require 'shinmera-gpg)
 ;; Code
 (require 'shinmera-lisp)
 (require 'shinmera-eiffel)
