@@ -43,7 +43,6 @@
  browse-url-browser-function    'browse-url-generic
  browse-url-generic-program     (or (getenv "BROWSER") "xdg-open")
  ring-bell-function             'ignore
- ispell-dictionary              "british"
  backup-directory-alist         '((".*" . "~/.saves/"))
  vc-follow-symlinks             t
  openwith-associations          '(("\\.png\\'" "gthumb" (file))

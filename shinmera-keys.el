@@ -19,7 +19,7 @@
 (define-my-key "C-q"           'er/expand-region)
 (define-my-key "M-g"           'raise-sexp)
 (define-my-key "C-v"           'yank)
-(define-my-key "C-l"           'fd-switch-dictionary)
+(define-my-key "C-l"           'switch-dictionary)
 (define-my-key "C-o"           'uim-mode)
 (define-my-key "C-c d"         'toggle-window-dedication)
 

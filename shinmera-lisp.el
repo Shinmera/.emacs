@@ -35,7 +35,6 @@
  lisp-loop-indent-forms-like-keywords         t
  lisp-lambda-list-keyword-parameter-alignment t)
 
-(add-hook 'slime-mode-hook                    #'flyspell-prog-mode)
 (add-hook 'slime-repl-mode-hook               #'override-slime-repl-bindings-with-paredit)
 (add-hook 'slime-repl-mode-hook               #'set-slime-history-keys)
 
@@ -140,7 +139,6 @@
 ;;;;;;
 ;; Elisp
 (require 'elisp-slime-nav)
-(add-hook 'emacs-lisp-mode-hook #'flyspell-prog-mode)
 (add-hook 'emacs-lisp-mode-hook #'elisp-slime-nav-mode)
 
 ;;;;;;

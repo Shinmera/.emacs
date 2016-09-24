@@ -36,5 +36,4 @@
 
 (add-hook 'TeX-mode-hook              #'(lambda () (TeX-fold-mode 1)))
 (add-hook 'TeX-mode-hook              #'LaTeX-math-mode)
-(add-hook 'TeX-mode-hook              #'flyspell-mode)
 

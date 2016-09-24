@@ -9,7 +9,6 @@
 (autoload 'rainbow-mode "rainbow-mode" "Rainbow colors" t)
 
 (add-hook 'css-mode-hook              #'rainbow-mode)
-(add-hook 'text-mode-hook             #'flyspell-mode)
 
 (add-to-list 'magic-mode-alist        '("<!DOCTYPE html" . web-mode))
 (add-to-list 'auto-mode-alist         '("\\.htm\\'" . web-mode))

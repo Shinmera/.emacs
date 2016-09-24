@@ -14,6 +14,7 @@
 (require 'shinmera-paste)
 (require 'shinmera-windows)
 (require 'shinmera-uim)
+(require 'shinmera-spell)
 (require 'shinmera-keys)
 ;; Code
 (require 'shinmera-lisp)
