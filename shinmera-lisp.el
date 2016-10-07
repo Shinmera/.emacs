@@ -36,11 +36,17 @@
  lisp-lambda-list-keyword-parameter-alignment t)
 
 (add-hook 'slime-repl-mode-hook               #'override-slime-repl-bindings-with-paredit)
-(add-hook 'slime-repl-mode-hook               #'set-slime-history-keys)
+(add-hook 'slime-repl-mode-hook               #'set-slime-repl-return)
 
-(defun set-slime-history-keys ()
-  (local-set-key (kbd "C-x <up>") 'slime-repl-backward-input)
-  (local-set-key (kbd "C-x <down>") 'slime-repl-forward-input))
+(defun set-slime-repl-return ()
+  (define-key slime-repl-mode-map (kbd "RET") 'slime-repl-return-at-end)
+  (define-key slime-repl-mode-map (kbd "<return>") 'slime-repl-return-at-end))
+
+(defun slime-repl-return-at-end ()
+  (interactive)
+  (if (<= (point-max) (point))
+      (slime-repl-return)
+      (slime-repl-newline-and-indent)))
 
 (defun override-slime-repl-bindings-with-paredit ()
   (define-key slime-repl-mode-map
