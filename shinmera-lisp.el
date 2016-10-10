@@ -8,6 +8,7 @@
 ;;;;;;
 ;; SLIME
 (require 'cl-lib)
+(require 'cl-indent)
 (require 'slime-autoloads)
 
 (autoload 'hyperspec-lookup "clhs-use-local" t)
