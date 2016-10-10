@@ -32,7 +32,8 @@
 ;; Configure generals
 (powerline-default-theme)
 (setq-default 
- indent-tabs-mode               nil)
+ indent-tabs-mode               nil
+ buffer-file-coding-system      'utf-8-unix)
 (setq
  inhibit-startup-screen         t
  show-paren-delay               0
