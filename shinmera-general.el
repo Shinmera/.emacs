@@ -53,7 +53,9 @@
                                   ("\\.gif\\'" ,image-viewer (file))
                                   ("\\.svg\\'" ,image-viewer (file))
                                   ("\\.pdf\\'" "okular" (file)))
- pop-up-frame-function          (lambda () (split-window-right)))
+ pop-up-frame-function          (lambda () (split-window-right))
+ split-height-threshold         1400
+ split-width-treshold           1500)
 (autoload 'dired "dired+" "Dired+" t)
 (put 'upcase-region 'disabled nil)
 
