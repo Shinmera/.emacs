@@ -31,31 +31,30 @@
 ;;;;;;
 ;; Configure generals
 (powerline-default-theme)
-(setq-default 
- indent-tabs-mode               nil
- buffer-file-coding-system      'utf-8-unix)
-(setq
- inhibit-startup-screen         t
- show-paren-delay               0
- ido-enable-flex-matching       t
- ido-everywhere                 t
- enable-local-variables         :all
- linum-format                   "%d "
- browse-url-browser-function    'browse-url-generic
- browse-url-generic-program     (or (getenv "BROWSER") "xdg-open")
- ring-bell-function             'ignore
- backup-directory-alist         '((".*" . "~/.saves/"))
- vc-follow-symlinks             t
- image-viewer                   "geeqie"
- openwith-associations          `(("\\.png\\'" ,image-viewer (file))
-                                  ("\\.jpg\\'" ,image-viewer (file))
-                                  ("\\.jpeg\\'" ,image-viewer (file))
-                                  ("\\.gif\\'" ,image-viewer (file))
-                                  ("\\.svg\\'" ,image-viewer (file))
-                                  ("\\.pdf\\'" "okular" (file)))
- pop-up-frame-function          (lambda () (split-window-right))
- split-height-threshold         1400
- split-width-treshold           1500)
+(setq-default indent-tabs-mode nil)
+(setq-default buffer-file-coding-system 'utf-8-unix)
+(setq inhibit-startup-screen t)
+(setq show-paren-delay 0)
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
+(setq enable-local-variables :all)
+(setq linum-format "%d ")
+(setq backup-directory-alist '((".*" . "~/.saves/")))
+(setq vc-follow-symlinks t)
+(setq pop-up-frame-function (lambda () (split-window-right)))
+(setq split-height-threshold 1400)
+(setq split-width-treshold 1500)
+(setq browse-url-browser-function 'browse-url-generic)
+(setq browse-url-generic-program (or (getenv "BROWSER") "xdg-open"))
+(setq ring-bell-function 'ignore)
+(setq image-viewer "geeqie")
+(setq pdf-viewer "okular")
+(setq openwith-associations `(("\\.png\\'" ,image-viewer (file))
+                              ("\\.jpg\\'" ,image-viewer (file))
+                              ("\\.jpeg\\'" ,image-viewer (file))
+                              ("\\.gif\\'" ,image-viewer (file))
+                              ("\\.svg\\'" ,image-viewer (file))
+                              ("\\.pdf\\'" ,pdf-viewer (file))))
 (autoload 'dired "dired+" "Dired+" t)
 (put 'upcase-region 'disabled nil)
 
