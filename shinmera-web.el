@@ -26,7 +26,6 @@
 
 ;;;;;;
 ;; LASS support
-(add-to-list 'load-path "~/Projects/CL/lquery-stack/LASS/")
-(add-to-list 'load-path "~/Projects/CL/LASS/")
+(add-to-list 'load-path "~/Projects/cl/LASS/")
 (add-to-list 'auto-mode-alist '("\\.lass\\'" . lass-mode))
 (autoload 'lass-mode "lass" "Lass Support" t)
