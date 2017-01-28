@@ -63,7 +63,8 @@
 (when window-system
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
-  (load-theme 'spolsky t))
+  (load-theme 'spolsky t)
+  (setq confirm-kill-emacs 'y-or-n-p))
 
 ;;;;;;
 ;; OS X
