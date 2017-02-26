@@ -6,7 +6,7 @@
   (ensure-installed
    'multiple-cursors 'expand-region
    'powerline 'sublime-themes 'markdown-mode 'dired+
-   'openwith 'smex))
+   'openwith 'smex 'fic-mode))
 
 ;;;;;;
 ;; Load global prerequisites
