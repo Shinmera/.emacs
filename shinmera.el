@@ -13,7 +13,7 @@
 (require 'shinmera-magit)
 (require 'shinmera-paste)
 (require 'shinmera-windows)
-(require 'shinmera-uim)
+;; (require 'shinmera-uim)
 (require 'shinmera-spell)
 (require 'shinmera-keys)
 (require 'shinmera-gpg)
