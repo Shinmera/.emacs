@@ -8,7 +8,7 @@
 
 (add-hook 'after-init-hook 'global-company-mode)
 
-(setq company-quickhelp-delay 0.5)
+(setq company-quickhelp-delay 0.7)
 
 (define-key company-active-map (kbd "<up>") 'company-select-previous)
 (define-key company-active-map (kbd "<down>") 'company-select-next)
