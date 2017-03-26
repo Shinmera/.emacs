@@ -59,6 +59,17 @@
 (put 'upcase-region 'disabled nil)
 
 ;;;;;;
+;; ESHELL
+(defun eshell-clear-output ()
+  (interactive)
+  (let ((inhibit-read-only t))
+    (erase-buffer)
+    (eshell-send-input)))
+
+(add-hook 'eshell-mode-hook
+          (lambda () (define-key eshell-mode-map (kbd "C-c M-o") 'eshell-clear-output)))
+
+;;;;;;
 ;; Windowed system extra settings
 (when window-system
   (tool-bar-mode -1)
