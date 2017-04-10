@@ -57,6 +57,8 @@
                               ("\\.pdf\\'" ,pdf-viewer (file))))
 (autoload 'dired "dired+" "Dired+" t)
 (put 'upcase-region 'disabled nil)
+;; Workaround for https://github.com/magnars/expand-region.el/issues/220
+(setq shift-select-mode nil)
 
 ;;;;;;
 ;; ESHELL
