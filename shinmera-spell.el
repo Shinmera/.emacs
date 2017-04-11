@@ -1,6 +1,6 @@
 (provide 'shinmera-spell)
 
-(setq used-spelling-dictionaries '("british" "english" "deutsch8"))
+(setq used-spelling-dictionaries '("en_GB" "en_US" "de_CH"))
 (setq ispell-dictionary (first used-spelling-dictionaries))
 
 (add-hook 'slime-mode-hook #'flyspell-prog-mode)
