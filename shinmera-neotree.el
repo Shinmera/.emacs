@@ -6,8 +6,9 @@
   (ensure-installed 'neotree))
 
 (setq neo-smart-open nil)
+(setq neo-autorefresh nil)
 (setq neo-theme 'arrow)
-(setq neo-window-width 50)
+(setq neo-window-width 40)
 
 (define-my-key "C-x d" 'neotree-show)
 (define-my-key "C-x e" 'neotree-hide)
