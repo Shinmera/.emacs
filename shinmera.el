@@ -25,5 +25,6 @@
 (require 'shinmera-matlab)
 (require 'shinmera-haskell)
 (require 'shinmera-js)
+(require 'shinmera-c)
 ;; Last
 (require 'shinmera-startup)
