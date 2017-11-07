@@ -3,7 +3,7 @@
 (require 'shinmera-package)
 
 (when (featurep 'shinmera-package)
-  (ensure-installed 'slime 'paredit 'elisp-slime-nav))
+  (ensure-installed 'slime 'paredit 'elisp-slime-nav 'macrostep))
 
 ;;;;;;
 ;; SLIME
@@ -16,7 +16,7 @@
 (setq
  shinmera-slime-contribs '(slime-fancy slime-asdf slime-sprof slime-mdot-fu
                            slime-compiler-notes-tree slime-hyperdoc
-                           slime-indentation slime-repl)
+                           slime-indentation slime-repl slime-macrostep)
  slime-complete-symbol-function               'slime-fuzzy-complete-symbol
  slime-net-coding-system                      'utf-8-unix
  slime-startup-animation                      nil
