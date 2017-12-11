@@ -130,7 +130,7 @@
            (eql macro-char ?#)))))
 
 (defun paredit-detect-cl-macro-character (endp delimiter)
-  (when (find major-mode '(slime-repl-mode lisp-mode))
+  (when (cl-find major-mode '(slime-repl-mode lisp-mode))
     (if (not endp)
         (save-excursion
          (let ((1-back (char-before (point)))
