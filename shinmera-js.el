@@ -17,6 +17,8 @@
 (when (featurep 'shinmera-company)
   (when (featurep 'shinmera-package)
     (ensure-installed 'company-tern))
+
+  (require 'company-tern)
   (add-to-list 'company-backends 'company-tern)
   (add-hook 'js2-mode-hook (lambda () (tern-mode) (company-mode)))
 
