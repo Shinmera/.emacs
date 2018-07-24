@@ -1,5 +1,3 @@
-(provide 'shinmera-functions)
-
 ;;;;;;
 ;; Various helper functions
 (defun delete-this-buffer-and-file ()
@@ -65,3 +63,5 @@ i.e. change right window to bottom, or change bottom window to right."
                     (split-window-vertically)
                     (split-window-horizontally))
                 (set-window-buffer (windmove-find-other-window neighbour-dir) other-buf))))))))
+
+(provide 'shinmera-functions)

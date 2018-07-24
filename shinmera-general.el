@@ -1,4 +1,3 @@
-(provide 'shinmera-general)
 (require 'shinmera-package)
 (require 'shinmera-functions)
 
@@ -94,3 +93,5 @@
 ;; Linux
 (when (eq system-type 'linux)
   (add-to-path "/usr/local/bin"))
+
+(provide 'shinmera-general)

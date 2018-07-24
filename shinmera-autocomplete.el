@@ -1,5 +1,3 @@
-(provide 'shinmera-autocomplete)
-
 (when (featurep 'shinmera-package)
   (ensure-installed 'auto-complete))
 
@@ -12,3 +10,5 @@
                        (if (not (minibufferp (current-buffer)))
                            (auto-complete-mode 1))))
 (real-global-auto-complete-mode t)
+
+(provide 'shinmera-autocomplete)

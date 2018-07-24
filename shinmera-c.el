@@ -1,4 +1,3 @@
-(provide 'shinmera-c)
 (require 'shinmera-package)
 (require 'shinmera-keys)
 
@@ -7,3 +6,5 @@
 
 (when (featurep 'shinmera-company)
   (add-hook 'c-mode-hook #'company-mode))
+
+(provide 'shinmera-c)

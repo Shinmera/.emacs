@@ -1,4 +1,3 @@
-(provide 'shinmera-ecb)
 (require 'shinmera-package)
 
 (when (featurep 'shinmera-package)
@@ -26,3 +25,5 @@
                            "~/quicklisp/dists/quicklisp/software"
                            "/usr/share/sbcl-source")
  ecb-tree-buffer-style   'ascii-guides)
+
+(provide 'shinmera-ecb)

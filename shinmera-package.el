@@ -1,5 +1,3 @@
-(provide 'shinmera-package)
-
 ;;;;;;
 ;; Set up package management
 (require 'package)
@@ -27,3 +25,5 @@
     (dolist (package packages)
       (unless (package-installed-p package)
         (package-install package)))))
+
+(provide 'shinmera-package)

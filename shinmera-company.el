@@ -1,5 +1,3 @@
-(provide 'shinmera-company)
-
 (when (featurep 'shinmera-package)
   (ensure-installed 'company 'company-quickhelp))
 
@@ -12,3 +10,5 @@
 
 (define-key company-active-map (kbd "<up>") 'company-select-previous)
 (define-key company-active-map (kbd "<down>") 'company-select-next)
+
+(provide 'shinmera-company)

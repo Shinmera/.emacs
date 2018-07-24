@@ -1,4 +1,3 @@
-(provide 'shinmera-neotree)
 (require 'shinmera-package)
 (require 'shinmera-keys)
 
@@ -12,3 +11,5 @@
 
 (define-my-key "C-x d" 'neotree-show)
 (define-my-key "C-x e" 'neotree-hide)
+
+(provide 'shinmera-neotree)

@@ -1,4 +1,3 @@
-(provide 'shinmera-haskell)
 (require 'shinmera-package)
 (require 'shinmera-functions)
 
@@ -35,3 +34,5 @@
                                   (define-key haskell-cabal-mode-map (kbd "C-c C-o") 'haskell-compile)))
 
 (add-to-path (expand-file-name "~/.cabal/bin"))
+
+(provide 'shinmera-haskell)

@@ -1,5 +1,4 @@
 ;; -*- mode: elisp; lexical-binding: t; -*-
-(provide 'shinmera-lisp)
 (require 'shinmera-package)
 
 (when (featurep 'shinmera-package)
@@ -174,3 +173,5 @@
 ;;;;;
 ;; Setup slime
 (slime-setup shinmera-slime-contribs)
+
+(provide 'shinmera-lisp)

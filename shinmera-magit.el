@@ -1,8 +1,7 @@
-(provide 'shinmera-magit)
-
 (when (featurep 'shinmera-package)
-  (ensure-installed 'magit))
+  (ensure-installed 'magit 'magit-todos))
 
+(magit-todos-mode)
 (setq
  magit-delete-by-moving-to-trash nil
  magit-no-confirm '(stage-all-changes unstage-all-changes))
@@ -11,3 +10,5 @@
  git-commit-fill-column 9999
  git-commit-summary-max-length 9999
  git-commit-finish-query-functions nil)
+
+(provide 'shinmera-magit)

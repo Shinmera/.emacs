@@ -1,4 +1,3 @@
-(provide 'shinmera-keys)
 (require 'shinmera-general)
 
 ;;;;;;
@@ -17,12 +16,14 @@
 (define-my-key "C-M-m <left>"  'mc/unmark-previous-like-this)
 (define-my-key "C-M-m a"       'mc/mark-all-like-this)
 (define-my-key "C-q"           'er/expand-region)
+(define-my-key "C-S-q"         'quoted-insert)
 (define-my-key "M-g"           'raise-sexp)
 (define-my-key "C-v"           'yank)
 (define-my-key "C-l"           'switch-dictionary)
 (define-my-key "C-o"           'uim-mode)
 (define-my-key "C-c d"         'toggle-window-dedication)
 (define-my-key "<apps>"        'execute-extended-command)
+(define-my-key "C-c s"         'slime-selector)
 
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
@@ -43,3 +44,5 @@
         (assq-delete-all 'my-keys-minor-mode minor-mode-map-alist)
         (add-to-list 'minor-mode-map-alist mykeys))))
 (ad-activate 'load)
+
+(provide 'shinmera-keys)

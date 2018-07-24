@@ -1,5 +1,3 @@
-(provide 'shinmera-spell)
-
 (setq used-spelling-dictionaries '("en_GB" "en_US" "de_CH"))
 (setq ispell-dictionary (first used-spelling-dictionaries))
 
@@ -16,3 +14,5 @@
                    used-spelling-dictionaries)))
     (ispell-change-dictionary new)
     (message "Dictionary switched from %s to %s" old new)))
+
+(provide 'shinmera-spell)

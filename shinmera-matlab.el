@@ -1,4 +1,3 @@
-(provide 'shinmera-matlab)
 (require 'shinmera-package)
 
 (when (featurep 'shinmera-package)
@@ -12,3 +11,5 @@
  '("\\.m$" . matlab-mode))
 (setq matlab-indent-function t)
 (setq matlab-shell-command "matlab")
+
+(provide 'shinmera-matlab)

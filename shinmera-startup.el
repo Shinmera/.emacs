@@ -1,5 +1,3 @@
-(provide 'shinmera-startup)
-
 (defun startup-shinmera ()
   (when window-system
     (when (featurep 'slime)
@@ -13,3 +11,5 @@
 
 ;; Make sure any user changes can be processed before this.
 (add-hook 'after-init-hook 'startup-shinmera)
+
+(provide 'shinmera-startup)

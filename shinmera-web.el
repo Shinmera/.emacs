@@ -1,4 +1,3 @@
-(provide 'shinmera-web)
 (require 'shinmera-package)
 
 (when (featurep 'shinmera-package)
@@ -29,3 +28,5 @@
 (add-to-list 'load-path "~/Projects/cl/LASS/")
 (add-to-list 'auto-mode-alist '("\\.lass\\'" . lass-mode))
 (autoload 'lass-mode "lass" "Lass Support" t)
+
+(provide 'shinmera-web)

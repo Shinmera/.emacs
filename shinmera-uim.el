@@ -1,5 +1,3 @@
-(provide 'shinmera-uim)
-
 ;;;;;;
 ;; Autoloading and setting.
 (require 'uim)
@@ -14,3 +12,4 @@
                        "action_google-cgiapi-jp_hiragana"
                        "action_mozc_hiragana"))
 
+(provide 'shinmera-uim)

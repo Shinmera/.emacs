@@ -1,5 +1,3 @@
-(provide 'shinmera-windows)
-
 ;; http://directed-procrastination.blogspot.co.uk/2014/04/some-emacs-hacks-for-gdb-and-other-stuff.html
 
 (defun undedicate-window (&optional window)
@@ -21,3 +19,5 @@ it will ask first)."
   (interactive)
   (let ((window (or window (get-buffer-window))))
     (set-window-dedicated-p window (not (window-dedicated-p window)))))
+
+(provide 'shinmera-windows)

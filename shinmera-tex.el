@@ -1,4 +1,3 @@
-(provide 'shinmera-tex)
 (require 'shinmera-package)
 
 (when (featurep 'shinmera-package)
@@ -42,3 +41,4 @@
 (add-hook 'TeX-mode-hook              #'(lambda () (TeX-fold-mode 1)))
 (add-hook 'TeX-mode-hook              #'LaTeX-math-mode)
 
+(provide 'shinmera-tex)
