@@ -4,32 +4,32 @@
 (when (featurep 'shinmera-package)
   (ensure-installed
    'multiple-cursors 'expand-region
-   'powerline 'sublime-themes 'markdown-mode 'dired+
-   'openwith 'smex 'fic-mode))
+   'doom-themes 'doom-modeline 'markdown-mode 'dired+
+   'openwith 'smex 'fic-mode 'helpful))
 
 ;;;;;;
 ;; Load global prerequisites
 (require 'multiple-cursors)
 (require 'expand-region)
-(require 'powerline)
 (require 'server)
 (require 'smex)
+(require 'doom-modeline)
 
 ;;;;;;
 ;; Activate default modes
+(doom-modeline-init)
 (ido-mode 1)
 (show-paren-mode 1)
 (electric-indent-mode 1)
 (global-ede-mode 1)
 (semantic-mode 1)
 (delete-selection-mode 1)
-(global-linum-mode 1)
+(global-display-line-numbers-mode 1)
 (openwith-mode t)
 (smex-initialize)
 
 ;;;;;;
 ;; Configure generals
-(powerline-default-theme)
 (setq-default indent-tabs-mode nil)
 (setq-default buffer-file-coding-system 'utf-8-unix)
 (setq inhibit-startup-screen t)
@@ -37,7 +37,6 @@
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
 (setq enable-local-variables :all)
-(setq linum-format "%d ")
 (setq backup-directory-alist '((".*" . "~/.saves/")))
 (setq vc-follow-symlinks t)
 (setq pop-up-frame-function (lambda () (split-window-right)))
@@ -75,7 +74,7 @@
 (when window-system
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
-  (load-theme 'spolsky t)
+  (load-theme 'doom-molokai t)
   (setq confirm-kill-emacs 'y-or-n-p))
 
 ;;;;;;

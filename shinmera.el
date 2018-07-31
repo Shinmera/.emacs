@@ -17,6 +17,7 @@
 (require 'shinmera-spell)
 (require 'shinmera-keys)
 (require 'shinmera-gpg)
+(require 'shinmera-perspective)
 ;; Code
 (require 'shinmera-lisp)
 (require 'shinmera-eiffel)

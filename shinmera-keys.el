@@ -24,6 +24,9 @@
 (define-my-key "C-c d"         'toggle-window-dedication)
 (define-my-key "<apps>"        'execute-extended-command)
 (define-my-key "C-c s"         'slime-selector)
+(define-my-key "C-h f"         'helpful-callable)
+(define-my-key "C-h v"         'helpful-variable)
+(define-my-key "C-h k"         'helpful-key)
 
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
