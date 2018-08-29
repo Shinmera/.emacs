@@ -15,15 +15,15 @@
     (package-refresh-contents)
     (setf *package-lists-fetched* t)))
 
-(defun packages-installed-p (&rest packages)
-  (loop for package in packages
-        always (package-installed-p package)))
+(defun package-locally-installed-p (package)
+  (assq package package-alist))
 
 (defun ensure-installed (&rest packages)
-  (unless (apply #'packages-installed-p packages)
+  (unless (cl-loop for package in packages
+                   always (package-locally-installed-p package))
     (soft-fetch-package-lists)
     (dolist (package packages)
-      (unless (package-installed-p package)
+      (unless (package-locally-installed-p package)
         (package-install package)))))
 
 (provide 'shinmera-package)
