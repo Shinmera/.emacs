@@ -4,7 +4,7 @@
 (when (featurep 'shinmera-package)
   (ensure-installed
    'multiple-cursors 'expand-region
-   'doom-themes 'doom-modeline 'markdown-mode 'dired+
+   'doom-themes 'doom-modeline 'markdown-mode
    'openwith 'smex 'fic-mode 'helpful))
 
 ;;;;;;
