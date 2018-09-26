@@ -1,5 +1,5 @@
 (when (featurep 'shinmera-package)
-  (ensure-installed 'magit 'magit-todos 'magit-gh-pulls))
+  (ensure-installed 'magit 'magithub 'magit-todos 'magit-gh-pulls))
 
 (add-hook 'magit-mode-hook 'turn-on-magit-gh-pulls)
 (magit-todos-mode)
