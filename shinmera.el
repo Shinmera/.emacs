@@ -28,5 +28,6 @@
 (require 'shinmera-js)
 (require 'shinmera-c)
 (require 'shinmera-java)
+(require 'shinmera-markless)
 ;; Last
 (require 'shinmera-startup)
