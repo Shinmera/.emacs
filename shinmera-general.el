@@ -5,7 +5,8 @@
   (ensure-installed
    'multiple-cursors 'expand-region
    'doom-themes 'doom-modeline 'markdown-mode
-   'openwith 'smex 'fic-mode 'helpful))
+   'openwith 'smex 'fic-mode 'helpful
+   'olivetti))
 
 ;;;;;;
 ;; Load global prerequisites

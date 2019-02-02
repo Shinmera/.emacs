@@ -29,5 +29,6 @@
 (require 'shinmera-c)
 (require 'shinmera-java)
 (require 'shinmera-shell)
+(require 'shinmera-markless)
 ;; Last
 (require 'shinmera-startup)
