@@ -39,6 +39,9 @@
 (add-hook 'slime-repl-mode-hook               #'override-slime-repl-bindings-with-paredit)
 (add-hook 'slime-repl-mode-hook               #'set-slime-repl-return)
 
+(add-hook 'slime-inspector-mode-hook
+          (lambda () (define-key slime-inspector-mode-map (kbd ",") #'slime-inspector-pop)))
+
 (defun set-slime-repl-return ()
   (define-key slime-repl-mode-map (kbd "RET") 'slime-repl-return-at-end)
   (define-key slime-repl-mode-map (kbd "<return>") 'slime-repl-return-at-end))
