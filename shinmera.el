@@ -30,5 +30,6 @@
 (require 'shinmera-java)
 (require 'shinmera-shell)
 (require 'shinmera-markless)
+(require 'shinmera-glsl)
 ;; Last
 (require 'shinmera-startup)
