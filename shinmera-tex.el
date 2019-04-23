@@ -1,7 +1,9 @@
 (require 'shinmera-package)
 
 (when (featurep 'shinmera-package)
-  (ensure-installed 'auctex))
+  (ensure-installed 'auctex)
+  (when (featurep 'shinmera-company)
+    (ensure-installed 'company-auctex 'company-bibtex)))
 
 ;;;;;;
 ;; Set up TeX and AUCTeX
