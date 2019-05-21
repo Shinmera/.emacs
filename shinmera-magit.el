@@ -8,7 +8,13 @@
 (setq
  magithub-clone-default-directory "~/Projects"
  magit-delete-by-moving-to-trash nil
- magit-no-confirm '(stage-all-changes unstage-all-changes))
+ magit-no-confirm '(stage-all-changes unstage-all-changes)
+ hl-todo-keyword-faces '(("KLUDGE" . "#d0bf8f")
+                         ("HACK" . "#d0bf8f")
+                         ("TODO" . "#D98C32")
+                         ("FIXME" . "#EF681F")
+                         ("WTF" . "#F8240E")))
+
 
 ;; Stop with these fucking annoying "'"style"'" conventions
 (setq
