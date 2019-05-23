@@ -13,7 +13,8 @@
                          ("HACK" . "#d0bf8f")
                          ("TODO" . "#D98C32")
                          ("FIXME" . "#EF681F")
-                         ("WTF" . "#F8240E")))
+                         ("WTF" . "#F8240E"))
+ magit-todos-keywords-list (mapcar #'car hl-todo-keyword-faces))
 
 
 ;; Stop with these fucking annoying "'"style"'" conventions
