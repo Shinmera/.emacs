@@ -38,7 +38,7 @@
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
 (setq ido-create-new-buffer 'always)
-(setq ido-use-filename-at-point 'guess)
+(setq ido-use-filename-at-point 'nil)
 (setq ido-ignore-extensions t)
 (setq enable-local-variables :all)
 (setq backup-directory-alist '((".*" . "~/.saves/")))
