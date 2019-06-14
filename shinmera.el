@@ -31,5 +31,6 @@
 (require 'shinmera-shell)
 (require 'shinmera-markless)
 (require 'shinmera-glsl)
+(require 'shinmera-erlang)
 ;; Last
 (require 'shinmera-startup)
