@@ -36,13 +36,17 @@
  lisp-loop-indent-forms-like-keywords         t
  lisp-lambda-list-keyword-parameter-alignment t)
 
-(add-hook 'slime-repl-mode-hook               #'override-slime-repl-bindings-with-paredit)
-(add-hook 'slime-repl-mode-hook               #'set-slime-repl-return)
+(add-hook 'slime-repl-mode-hook               #'adapt-slime-repl-keys)
 
 (add-hook 'slime-inspector-mode-hook
           (lambda () (define-key slime-inspector-mode-map (kbd ",") #'slime-inspector-pop)))
 
-(defun set-slime-repl-return ()
+(defun adapt-slime-repl-keys ()
+  (define-key slime-repl-mode-map (read-kbd-macro paredit-backward-delete-key) nil)
+  (define-key paredit-mode-map (kbd "C-M-p") nil)
+  (define-key paredit-mode-map (kbd "C-M-n") nil)
+  (define-key slime-repl-mode-map (kbd "C-M-p") 'slime-repl-backward-input)
+  (define-key slime-repl-mode-map (kbd "C-M-n") 'slime-repl-forward-input)
   (define-key slime-repl-mode-map (kbd "RET") 'slime-repl-return-at-end)
   (define-key slime-repl-mode-map (kbd "<return>") 'slime-repl-return-at-end))
 
@@ -51,10 +55,6 @@
   (if (<= (point-max) (point))
       (slime-repl-return)
       (slime-repl-newline-and-indent)))
-
-(defun override-slime-repl-bindings-with-paredit ()
-  (define-key slime-repl-mode-map
-      (read-kbd-macro paredit-backward-delete-key) nil))
 
 (defmacro define-lisp-implementations (&rest decl)
   `(progn
