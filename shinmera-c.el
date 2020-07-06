@@ -2,20 +2,22 @@
 (require 'shinmera-keys)
 
 (when (featurep 'shinmera-package)
-  (ensure-installed 'irony 'company-irony 'company-c-headers
-                    'cmake-project 'cmake-mode))
+  (ensure-installed 'rtags 'rtags-xref 'irony 'company-irony 'company-c-headers
+                    'cmake-ide 'cmake-mode 'realgud-lldb))
 
-(add-hook 'c++-mode-hook 'irony-mode)
-(add-hook 'c-mode-hook 'irony-mode)
-(add-hook 'objc-mode-hook 'irony-mode)
+(require 'rtags)
+(require 'rtags-xref)
+(cmake-ide-setup)
+(add-hook 'c-mode-common-hook 'irony-mode)
+(add-hook 'c-mode-common-hook 'flycheck-mode)
+(add-hook 'c-mode-common-hook 'rtags-xref-enable)
 (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
-
-(autoload 'cmake-project-mode "cmake-project" nil t)
 
 (when (featurep 'shinmera-company)
   (add-hook 'c-mode-hook #'company-mode)
   (add-hook 'c++-mode-hook #'company-mode)
   (add-hook 'objc-mode-hook #'company-mode)
-  (add-to-list 'company-backends 'company-irony))
+  (add-to-list 'company-backends 'company-irony)
+  (add-to-list 'company-backends 'company-irony-c-headers))
 
 (provide 'shinmera-c)
