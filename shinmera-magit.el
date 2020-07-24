@@ -1,5 +1,5 @@
 (when (featurep 'shinmera-package)
-  (ensure-installed 'magit 'magithub 'magit-todos))
+  (ensure-installed 'magit 'magit-todos))
 
 (magit-todos-mode)
 ;(magithub-feature-autoinject t)
