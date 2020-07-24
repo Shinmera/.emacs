@@ -13,7 +13,7 @@
 (autoload 'hyperspec-lookup "clhs-use-local" t)
 
 (setq
- shinmera-slime-contribs '(slime-sprof slime-mdot-fu slime-fontifying-fu
+ shinmera-slime-contribs '(slime-asdf slime-sprof slime-mdot-fu slime-fontifying-fu
                            slime-compiler-notes-tree slime-hyperdoc
                            slime-indentation slime-repl slime-macrostep)
  slime-complete-symbol-function               'slime-fuzzy-complete-symbol
