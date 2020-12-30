@@ -8,9 +8,10 @@
 (require 'rtags)
 (require 'rtags-xref)
 (cmake-ide-setup)
-(add-hook 'c-mode-common-hook 'irony-mode)
-(add-hook 'c-mode-common-hook 'flycheck-mode)
-(add-hook 'c-mode-common-hook 'rtags-xref-enable)
+(add-hook 'c-mode-hook 'irony-mode)
+(add-hook 'c++-mode-hook 'irony-mode)
+(add-hook 'c-mode-hook 'flycheck-mode)
+(add-hook 'c-mode-hook 'rtags-xref-enable)
 (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
 
 (when (featurep 'shinmera-company)

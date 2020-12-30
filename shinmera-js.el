@@ -14,15 +14,4 @@
 (add-hook 'js2-mode-hook (lambda ()
                            (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))
 
-(when (featurep 'shinmera-company)
-  (when (featurep 'shinmera-package)
-    (ensure-installed 'company-tern))
-
-  (require 'company-tern)
-  (add-to-list 'company-backends 'company-tern)
-  (add-hook 'js2-mode-hook (lambda () (tern-mode) (company-mode)))
-
-  (define-key tern-mode-keymap (kbd "M-.") nil)
-  (define-key tern-mode-keymap (kbd "M-,") nil))
-
 (provide 'shinmera-js)
