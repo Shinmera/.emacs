@@ -27,8 +27,6 @@
  slime-inhibit-pipelining                     nil
  slime-load-failed-fasl                       'always
  slime-when-complete-filename-expand          t
- slime-repl-history-remove-duplicates         t
- slime-repl-history-trim-whitespaces          t
  slime-export-symbol-representation-auto      t
  lisp-indent-function                         'common-lisp-indent-function
  lisp-loop-indent-subclauses                  nil

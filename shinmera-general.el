@@ -20,6 +20,7 @@
 ;; Activate default modes
 (doom-modeline-init)
 (ido-mode 1)
+(ido-everywhere 1)
 (show-paren-mode 1)
 (electric-indent-mode 1)
 (global-ede-mode 1)
@@ -36,7 +37,6 @@
 (setq inhibit-startup-screen t)
 (setq show-paren-delay 0)
 (setq ido-enable-flex-matching t)
-(setq ido-everywhere t)
 (setq ido-create-new-buffer 'always)
 (setq ido-use-filename-at-point 'nil)
 (setq ido-ignore-extensions t)
