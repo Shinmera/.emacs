@@ -21,6 +21,7 @@
 (defun ensure-installed (&rest packages)
   (unless (cl-loop for package in packages
                    always (package-locally-installed-p package))
+    (message "Trying to install: %s" packages)
     (soft-fetch-package-lists)
     (dolist (package packages)
       (unless (package-locally-installed-p package)

@@ -1,6 +1,3 @@
-(when (featurep 'shinmera-package)
-  (ensure-installed 'smtpmail))
-
 (require 'smtpmail)
 (setq user-full-name "Nicolas Hafner")
 (setq smtpmail-local-domain "tymoon.eu")
