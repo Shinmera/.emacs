@@ -6,7 +6,7 @@
    'multiple-cursors 'expand-region
    'doom-themes 'doom-modeline 'markdown-mode
    'openwith 'smex 'fic-mode 'helpful
-   'olivetti 'centaur-tabs))
+   'olivetti 'centaur-tabs 'projectile))
 
 ;;;;;;
 ;; Load global prerequisites
@@ -16,6 +16,7 @@
 (require 'smex)
 (require 'doom-modeline)
 (require 'centaur-tabs)
+(require 'projectile)
 
 ;;;;;;
 ;; Activate default modes
@@ -30,6 +31,7 @@
 (global-display-line-numbers-mode 1)
 (openwith-mode t)
 (smex-initialize)
+(projectile-mode +1)
 
 ;;;;;;
 ;; Configure generals
@@ -70,6 +72,7 @@
 ;; Workaround for https://github.com/magnars/expand-region.el/issues/220
 (setq shift-select-mode nil)
 (make-variable-buffer-local 'compile-command)
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 
 ;;;;;;
 ;; ESHELL

@@ -9,7 +9,7 @@
 ;; (require 'shinmera-autocomplete)
 (require 'shinmera-company)
 ;; (require 'shinmera-ecb)
-(require 'shinmera-neotree)
+(require 'shinmera-treemacs)
 (require 'shinmera-magit)
 (require 'shinmera-paste)
 (require 'shinmera-windows)
