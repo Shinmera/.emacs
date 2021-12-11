@@ -6,7 +6,7 @@
    'multiple-cursors 'expand-region
    'doom-themes 'doom-modeline 'markdown-mode
    'openwith 'smex 'fic-mode 'helpful
-   'olivetti))
+   'olivetti 'centaur-tabs))
 
 ;;;;;;
 ;; Load global prerequisites
@@ -15,6 +15,7 @@
 (require 'server)
 (require 'smex)
 (require 'doom-modeline)
+(require 'centaur-tabs)
 
 ;;;;;;
 ;; Activate default modes
@@ -57,6 +58,13 @@
                               ("\\.gif\\'" ,image-viewer (file))
                               ("\\.svg\\'" ,image-viewer (file))
                               ("\\.pdf\\'" ,pdf-viewer (file))))
+(setq centaur-tabs-height 32)
+(setq centaur-tabs-style "bar")
+(setq centaur-tabs-set-icons t)
+(setq centaur-tabs-gray-out-icons 'buffer)
+(setq centaur-tabs-set-bar 'under)
+(centaur-tabs-headline-match)
+(centaur-tabs-mode t)
 (autoload 'dired "dired+" "Dired+" t)
 (put 'upcase-region 'disabled nil)
 ;; Workaround for https://github.com/magnars/expand-region.el/issues/220
