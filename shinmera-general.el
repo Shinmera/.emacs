@@ -32,6 +32,7 @@
 (openwith-mode t)
 (smex-initialize)
 (projectile-mode +1)
+(menu-bar-mode -1)
 
 ;;;;;;
 ;; Configure generals
@@ -65,6 +66,7 @@
 (setq centaur-tabs-set-icons t)
 (setq centaur-tabs-gray-out-icons 'buffer)
 (setq centaur-tabs-set-bar 'under)
+(setq x-underline-at-descent-line t)
 (centaur-tabs-headline-match)
 (centaur-tabs-mode t)
 (autoload 'dired "dired+" "Dired+" t)
