@@ -31,7 +31,10 @@
  lisp-indent-function                         'common-lisp-indent-function
  lisp-loop-indent-subclauses                  nil
  lisp-loop-indent-forms-like-keywords         t
- lisp-lambda-list-keyword-parameter-alignment t)
+ lisp-lambda-list-keyword-parameter-alignment t
+ initial-major-mode 'common-lisp-mode
+ initial-scratch-message ";; Scratch Common Lisp
+")
 
 (add-hook 'slime-repl-mode-hook               #'adapt-slime-repl-keys)
 
