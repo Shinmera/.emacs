@@ -7,7 +7,6 @@
 
 (require 'rtags)
 (require 'rtags-xref)
-(cmake-ide-setup)
 (add-hook 'c-mode-hook 'irony-mode)
 (add-hook 'c++-mode-hook 'irony-mode)
 (add-hook 'c-mode-hook 'flycheck-mode)
