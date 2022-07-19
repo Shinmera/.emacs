@@ -20,7 +20,7 @@
 
 ;;;;;;
 ;; Activate default modes
-(doom-modeline-init)
+(doom-modeline-mode 1)
 (ido-mode 1)
 (ido-everywhere 1)
 (show-paren-mode 1)
