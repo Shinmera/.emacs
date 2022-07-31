@@ -72,15 +72,15 @@
     (define-lisp-implementations
       (abcl  ("abcl"))
       (acl   ("alisp"))
-      (ccl32 ("ccl"))
-      (ccl   ("ccl64"))
+      (ccl   ("ccl"))
       (clasp ("clasp"))
       (clisp ("clisp"))
       (cmucl ("cmucl" "-quiet"))
       (ecl   ("ecl"))
       (mkcl  ("mkcl"))
       (xcl   ("xcl"))
-      (sbcl  ("sbcl" "--dynamic-space-size" "8192"))))
+      (sbcl  ("sbcl" "--dynamic-space-size" "8192"))
+      (sbcl-win  ("sbcl-win" "--dynamic-space-size" "8192"))))
   
   (when (eq system-type 'windows-nt)
     (define-lisp-implementations
