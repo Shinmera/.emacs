@@ -79,8 +79,8 @@
       (ecl   ("ecl"))
       (mkcl  ("mkcl"))
       (xcl   ("xcl"))
-      (sbcl  ("sbcl" "--dynamic-space-size" "8192"))
-      (sbcl-win  ("sbcl-win" "--dynamic-space-size" "8192"))))
+      (sbcl-win  ("sbcl-win" "--dynamic-space-size" "8192"))
+      (sbcl  ("sbcl" "--dynamic-space-size" "8192"))))
   
   (when (eq system-type 'windows-nt)
     (define-lisp-implementations
