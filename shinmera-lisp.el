@@ -41,6 +41,8 @@
 (add-hook 'slime-inspector-mode-hook
           (lambda () (define-key slime-inspector-mode-map (kbd ",") #'slime-inspector-pop)))
 
+(add-to-list 'auto-mode-alist '("\\.sexp\\'" . common-lisp-mode))
+
 (defun adapt-slime-repl-keys ()
   (define-key slime-repl-mode-map (read-kbd-macro paredit-backward-delete-key) nil)
   (define-key paredit-mode-map (kbd "C-M-p") nil)
