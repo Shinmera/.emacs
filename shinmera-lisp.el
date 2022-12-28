@@ -43,6 +43,11 @@
 
 (add-to-list 'auto-mode-alist '("\\.sexp\\'" . common-lisp-mode))
 
+(define-key slime-xref-mode-map (kbd "n") nil)
+(define-key slime-xref-mode-map [remap next-line] nil)
+(define-key slime-xref-mode-map (kbd "p") nil)
+(define-key slime-xref-mode-map [remap previous-line] nil)
+
 (defun adapt-slime-repl-keys ()
   (define-key slime-repl-mode-map (read-kbd-macro paredit-backward-delete-key) nil)
   (define-key paredit-mode-map (kbd "C-M-p") nil)
