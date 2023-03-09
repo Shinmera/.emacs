@@ -37,16 +37,16 @@
 ")
 
 (add-hook 'slime-repl-mode-hook               #'adapt-slime-repl-keys)
-
+(add-hook 'slime-xref-mode-hook
+          (lambda ()
+            (define-key slime-xref-mode-map (kbd "n") nil)
+            (define-key slime-xref-mode-map [remap next-line] nil)
+            (define-key slime-xref-mode-map (kbd "p") nil)
+            (define-key slime-xref-mode-map [remap previous-line] nil)))
 (add-hook 'slime-inspector-mode-hook
           (lambda () (define-key slime-inspector-mode-map (kbd ",") #'slime-inspector-pop)))
 
 (add-to-list 'auto-mode-alist '("\\.sexp\\'" . common-lisp-mode))
-
-(define-key slime-xref-mode-map (kbd "n") nil)
-(define-key slime-xref-mode-map [remap next-line] nil)
-(define-key slime-xref-mode-map (kbd "p") nil)
-(define-key slime-xref-mode-map [remap previous-line] nil)
 
 (defun adapt-slime-repl-keys ()
   (define-key slime-repl-mode-map (read-kbd-macro paredit-backward-delete-key) nil)
