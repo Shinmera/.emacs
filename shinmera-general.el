@@ -38,6 +38,7 @@
 ;; Configure generals
 (setq-default indent-tabs-mode nil)
 (setq-default buffer-file-coding-system 'utf-8-unix)
+(setq-default tab-width 4)
 (setq inhibit-startup-screen t)
 (setq show-paren-delay 0)
 (setq ido-enable-flex-matching t)
