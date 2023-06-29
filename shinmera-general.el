@@ -94,7 +94,7 @@
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
   (load-theme 'doom-molokai t)
-  (add-to-list 'default-frame-alist '(font . "-GOOG-Noto Sans Mono-normal-normal-normal-*-12-*-*-*-*-0-iso10646-1"))
+  (set-frame-font "Noto Sans Mono-10" nil t)
   (setq confirm-kill-emacs 'y-or-n-p))
 
 ;;;;;;
