@@ -20,4 +20,10 @@
   (add-to-list 'company-backends 'company-irony)
   (add-to-list 'company-backends 'company-irony-c-headers))
 
+(defun etags (dir-name)
+  "Create tags file."
+  (interactive "DDirectory: ")
+  (eshell-command
+   (format "find %s -type f -regex '.*\.[ch]\(pp\|xx\)?' | etags -" dir-name)))
+
 (provide 'shinmera-c)
