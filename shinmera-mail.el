@@ -1,5 +1,5 @@
 (require 'smtpmail)
-(setq user-full-name "Nicolas Hafner")
+(setq user-full-name "Yukari Hafner")
 (setq smtpmail-local-domain "tymoon.eu")
 (setq user-mail-address (concat "shinmera@" smtpmail-local-domain))
 (setq send-mail-function 'smtpmail-send-it)
