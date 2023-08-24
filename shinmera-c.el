@@ -23,7 +23,7 @@
 (defun etags (dir-name)
   "Create tags file."
   (interactive "DDirectory: ")
-  (eshell-command
-   (format "find %s -type f -regex '.*\.[ch]\(pp\|xx\)?' | etags -" dir-name)))
+  (shell-command
+   (format "find '%s' -type f -regex '.*\.[ch]\(pp\|xx\)?' | etags -" dir-name)))
 
 (provide 'shinmera-c)
