@@ -13,10 +13,14 @@
 (autoload 'hyperspec-lookup "clhs-use-local" t)
 
 (setq
- shinmera-slime-contribs '(slime-fontifying-fu
-                           slime-compiler-notes-tree slime-hyperdoc
-                           slime-indentation slime-repl slime-macrostep)
- slime-complete-symbol-function               'slime-fuzzy-complete-symbol
+ shinmera-slime-contribs '(slime-autodoc slime-asdf slime-autodoc slime-cl-indent
+                           slime-compiler-notes-tree slime-fontifying-fu slime-fuzzy
+                           slime-highlight-edits slime-hyperdoc slime-indentation
+                           slime-macrostep slime-mdot-fu slime-quicklisp slime-references
+                           slime-repl slime-sprof slime-trace-dialog slime-tramp
+                           slime-xref-browser)
+ slime-completion-at-point-functions          '(slime-filename-completion
+                                                slime-fuzzy-completion)
  slime-net-coding-system                      'utf-8-unix
  slime-startup-animation                      nil
  slime-auto-select-connection                 'always
