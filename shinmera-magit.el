@@ -1,8 +1,9 @@
 (when (featurep 'shinmera-package)
-  (ensure-installed 'magit 'magit-todos))
+  (ensure-installed 'magit 'magit-todos 'magit-delta 'magit-lfs 'git-timemachine))
 
 (magit-todos-mode)
 ;(magithub-feature-autoinject t)
+(add-hook 'magit-mode-hook (lambda () (magit-delta-mode +1)))
 
 (setq
  magithub-clone-default-directory "~/Projects"

@@ -22,7 +22,7 @@
                            slime-repl slime-sprof slime-trace-dialog
                            slime-tramp slime-xref-browser)
  slime-completion-at-point-functions          '(slime-filename-completion
-                                                slime-fuzzy-completion)
+                                                slime-fuzzy-complete-symbol)
  slime-net-coding-system                      'utf-8-unix
  slime-startup-animation                      nil
  slime-auto-select-connection                 'always

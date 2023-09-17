@@ -1,10 +1,15 @@
+(when (featurep 'shinmera-package)
+  (ensure-installed 'jinx))
+
 (setq used-spelling-dictionaries '("en_GB" "en_US" "de_CH"))
 (setq ispell-dictionary (first used-spelling-dictionaries))
+(setq jinx-languages (first used-spelling-dictionaries))
+(add-hook 'emacs-startup-hook #'global-jinx-mode)
 
-(add-hook 'slime-mode-hook #'flyspell-prog-mode)
-(add-hook 'emacs-lisp-mode-hook #'flyspell-prog-mode)
-(add-hook 'TeX-mode-hook #'flyspell-mode)
-(add-hook 'text-mode-hook #'flyspell-mode)
+;; (add-hook 'slime-mode-hook #'flyspell-prog-mode)
+;; (add-hook 'emacs-lisp-mode-hook #'flyspell-prog-mode)
+;; (add-hook 'TeX-mode-hook #'flyspell-mode)
+;; (add-hook 'text-mode-hook #'flyspell-mode)
 
 (defun switch-dictionary ()
   (interactive)
