@@ -36,5 +36,6 @@
 (require 'shinmera-glsl)
 ;; (require 'shinmera-erlang)
 (require 'shinmera-elixir)
+(require 'shinmera-arduino)
 ;; Last
 (require 'shinmera-startup)
