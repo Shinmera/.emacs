@@ -100,7 +100,7 @@
       (ccl   ("wx86cl64.exe"))
       (ccl32 ("wx86cl.exe"))
       (clisp ("clisp.exe"))
-      (sbcl  ("sbcl.exe")))))
+      (sbcl  ("sbcl.exe" "--dynamic-space-size" "8192")))))
   
 (defun set-default-lisp-implementation (impl)
   (let ((impl (cl-assoc impl slime-lisp-implementations)))
