@@ -1,5 +1,3 @@
-;;;;;;
-;; Various helper functions
 (defun delete-this-buffer-and-file ()
   "Removes file connected to current buffer and kills buffer."
   (interactive)
@@ -28,6 +26,13 @@
          (setenv "PATH" (concat (mapconcat 'identity things ":")
                                 ":" (getenv "PATH")))))
   (setq exec-path (append exec-path things)))
+
+(when (eq system-type 'darwin)
+  (add-to-path "/usr/local/bin")
+  (add-to-path "/opt/local/bin"))
+
+(when (eq system-type 'linux)
+  (add-to-path "/usr/local/bin"))
 
 (defun kill-dired-buffers ()
   (interactive)

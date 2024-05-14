@@ -1,7 +1,5 @@
 (require 'shinmera-general)
 
-;;;;;;
-;; Extra keybindings
 (defvar my-keys-minor-mode-map (make-keymap) "my-keys-minor-mode keymap.")
 (defmacro define-my-key (kbd func)
   `(define-key my-keys-minor-mode-map (kbd ,kbd) ,func))
@@ -15,18 +13,17 @@
 (define-my-key "C-q"           'er/expand-region)
 (define-my-key "C-S-q"         'quoted-insert)
 (define-my-key "M-g"           'raise-sexp)
-(define-my-key "C-c d"         'toggle-window-dedication)
 (define-my-key "C-c s"         'slime-selector)
 (define-my-key "C-h f"         'helpful-callable)
 (define-my-key "C-h v"         'helpful-variable)
 (define-my-key "C-h k"         'helpful-key)
 (define-my-key "M-s"           'paredit-splice-sexp-killing-backward)
 (define-my-key "M-S"           'paredit-splice-sexp-killing-forward)
+(define-my-key "C-x d"         'treemacs)
 
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
-;; Activate my-keys possibly everywhere
 (define-minor-mode my-keys-minor-mode
   "A minor mode so that my key settings override annoying major modes."
   t " My-Keys" 'my-keys-minor-mode-map)

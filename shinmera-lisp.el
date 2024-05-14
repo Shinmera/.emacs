@@ -1,73 +1,72 @@
 ;; -*- mode: elisp; lexical-binding: t; -*-
-(require 'shinmera-package)
+(require 'shinmera-straight)
 
-(when (featurep 'shinmera-package)
-  (ensure-installed 'slime 'paredit 'elisp-slime-nav 'macrostep))
+(use-package elisp-mode
+  :straight (:type built-in)
+  :custom
+  (lisp-loop-indent-subclauses nil)
+  (lisp-loop-indent-forms-like-keywords t)
+  (lisp-lambda-list-keyword-parameter-alignment t))
 
-;;;;;;
-;; SLIME
-(require 'cl-lib)
-(require 'cl-indent)
-(require 'slime-autoloads)
+(use-package elisp-slime-nav
+  :commands (elisp-slime-nav-mode)
+  :hook (emacs-lisp-mode . elisp-slime-nav-mode))
 
-(autoload 'hyperspec-lookup "clhs-use-local" t)
+(use-package macrostep
+  :commands (macrostep-mode macrostep-expand))
 
-(setq
- shinmera-slime-contribs '(slime-autodoc slime-asdf slime-autodoc
-                           slime-cl-indent slime-compiler-notes-tree
-                           slime-fontifying-fu slime-fuzzy
-                           slime-hyperdoc slime-indentation
-                           slime-macrostep slime-mdot-fu
-                           slime-quicklisp slime-references
-                           slime-repl slime-sprof slime-trace-dialog
-                           slime-tramp slime-xref-browser)
- slime-completion-at-point-functions          '(slime-filename-completion
-                                                slime-fuzzy-complete-symbol)
- slime-net-coding-system                      'utf-8-unix
- slime-startup-animation                      nil
- slime-auto-select-connection                 'always
- slime-kill-without-query-p                   t
- slime-description-autofocus                  t 
- slime-fuzzy-explanation                      ""
- slime-asdf-collect-notes                     t
- slime-inhibit-pipelining                     nil
- slime-load-failed-fasl                       'always
- slime-when-complete-filename-expand          t
- slime-export-symbol-representation-auto      t
- lisp-indent-function                         'common-lisp-indent-function
- lisp-loop-indent-subclauses                  nil
- lisp-loop-indent-forms-like-keywords         t
- lisp-lambda-list-keyword-parameter-alignment t
- initial-major-mode 'common-lisp-mode
- initial-scratch-message ";; Scratch Common Lisp
+(use-package hyperspec
+  :commands (hyperspec-lookup))
+
+(use-package slime
+  :commands (slime slime-connect common-lisp-mode)
+  :bind
+  (:map slime-xref-mode-map
+        ("n" . nil) ([remap next-line] . nil)
+        ("p" . nil) ([remap previous-line] . nil))
+  (:map slime-inspector-mode-map
+        ("," . slime-inspector-pop))
+  (:map slime-repl-mode-map
+        ("" . nil)
+        ("C-M-p" . slime-repl-backward-input)
+        ("C-M-n" . slime-repl-forward-input)
+        ("RET" . slime-repl-return-at-end)
+        ("<return>" . slime-repl-return-at-end))
+  :mode
+  ("\\.sexp\\'" . common-lisp-mode)
+  ("\\.lisp\\'" . common-lisp-mode)
+  ("\\.asd\\'" . common-lisp-mode)
+  :custom
+  (slime-contribs '(slime-autodoc slime-asdf slime-autodoc
+                                  slime-cl-indent slime-compiler-notes-tree
+                                  slime-fontifying-fu slime-fuzzy
+                                  slime-hyperdoc slime-indentation
+                                  slime-macrostep slime-mdot-fu
+                                  slime-quicklisp slime-references
+                                  slime-repl slime-sprof slime-trace-dialog
+                                  slime-tramp slime-xref-browser))
+  (slime-completion-at-point-functions '(slime-filename-completion slime-fuzzy-complete-symbol))
+  (slime-net-coding-system 'utf-8-unix)
+  (slime-startup-animation nil)
+  (slime-auto-select-connection 'always)
+  (slime-kill-without-query-p t)
+  (slime-description-autofocus t )
+  (slime-fuzzy-explanation "")
+  (slime-asdf-collect-notes t)
+  (slime-inhibit-pipelining nil)
+  (slime-load-failed-fasl 'always)
+  (slime-when-complete-filename-expand t)
+  (slime-export-symbol-representation-auto t)
+  (initial-major-mode 'common-lisp-mode)
+  (initial-scratch-message ";; Scratch Common Lisp
 ")
-
-(add-hook 'slime-repl-mode-hook               #'adapt-slime-repl-keys)
-(add-hook 'slime-xref-mode-hook
-          (lambda ()
-            (define-key slime-xref-mode-map (kbd "n") nil)
-            (define-key slime-xref-mode-map [remap next-line] nil)
-            (define-key slime-xref-mode-map (kbd "p") nil)
-            (define-key slime-xref-mode-map [remap previous-line] nil)))
-(add-hook 'slime-inspector-mode-hook
-          (lambda () (define-key slime-inspector-mode-map (kbd ",") #'slime-inspector-pop)))
-
-(add-to-list 'auto-mode-alist '("\\.sexp\\'" . common-lisp-mode))
-
-(defun adapt-slime-repl-keys ()
-  (define-key slime-repl-mode-map (read-kbd-macro paredit-backward-delete-key) nil)
-  (define-key paredit-mode-map (kbd "C-M-p") nil)
-  (define-key paredit-mode-map (kbd "C-M-n") nil)
-  (define-key slime-repl-mode-map (kbd "C-M-p") 'slime-repl-backward-input)
-  (define-key slime-repl-mode-map (kbd "C-M-n") 'slime-repl-forward-input)
-  (define-key slime-repl-mode-map (kbd "RET") 'slime-repl-return-at-end)
-  (define-key slime-repl-mode-map (kbd "<return>") 'slime-repl-return-at-end))
-
-(defun slime-repl-return-at-end ()
-  (interactive)
-  (if (<= (point-max) (point))
-      (slime-repl-return)
+  :config
+  (defun slime-repl-return-at-end ()
+    (interactive)
+    (if (<= (point-max) (point))
+        (slime-repl-return)
       (slime-repl-newline-and-indent)))
+  (slime-setup))
 
 (defmacro define-lisp-implementations (&rest decl)
   `(progn
@@ -83,8 +82,8 @@
   (when (or (eq system-type 'gnu/linux)
             (eq system-type 'darwin))
     (define-lisp-implementations
-      (abcl  ("abcl"))
-      (acl   ("alisp"))
+        (abcl  ("abcl"))
+        (acl   ("alisp"))
       (ccl   ("ccl"))
       (clasp ("clasp"))
       (clisp ("clisp"))
@@ -97,62 +96,21 @@
   
   (when (eq system-type 'windows-nt)
     (define-lisp-implementations
-      (ccl   ("wx86cl64.exe"))
-      (ccl32 ("wx86cl.exe"))
+        (ccl   ("wx86cl64.exe"))
+        (ccl32 ("wx86cl.exe"))
       (clisp ("clisp.exe"))
       (sbcl  ("sbcl.exe" "--dynamic-space-size" "8192")))))
-  
-(defun set-default-lisp-implementation (impl)
-  (let ((impl (cl-assoc impl slime-lisp-implementations)))
-    (setq slime-lisp-implementations
-          (cl-remove impl slime-lisp-implementations))
-    (push impl slime-lisp-implementations)))
 
-;;;;;;
-;; Paredit
-(autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
+(use-package slime-company
+  :demand t
+  :after (slime company)
+  :custom
+  (slime-company-completion 'fuzzy)
+  (slime-company-after-completion 'slime-company-just-one-space)
+  :hook
+  ((slime-mode slime-repl-mode sldb-mode) . slime-company-maybe-enable))
 
-(add-hook 'emacs-lisp-mode-hook               #'enable-paredit-mode)
-(add-hook 'lisp-mode-hook                     #'enable-paredit-mode)
-(add-hook 'lisp-interaction-mode-hook         #'enable-paredit-mode)
-(add-hook 'scheme-mode-hook                   #'enable-paredit-mode)
-(add-hook 'ielm-mode-hook                     #'enable-paredit-mode)
-(add-hook 'slime-repl-mode-hook               #'enable-paredit-mode)
-
-(put 'paredit-forward-delete 'delete-selection 'supersede)
-(put 'paredit-backward-delete 'delete-selection 'supersede)
-(put 'paredit-newline 'delete-selection t)
-
-;;;;;;
-;; Elisp
-(require 'elisp-slime-nav)
-(add-hook 'emacs-lisp-mode-hook #'elisp-slime-nav-mode)
-
-;;;;;;
-;; Autocomplete
-(when (featurep 'shinmera-autocomplete)
-  (when (featurep 'shinmera-package)
-    (ensure-installed 'ac-slime))
-  
-  (autoload 'slime "ac-slime" "Slime AutoComplete" t)
-  (add-to-list 'ac-modes 'slime-repl-mode)
-  (add-hook 'slime-mode-hook #'set-up-slime-ac)
-  (add-hook 'slime-repl-mode-hook #'set-up-slime-ac))
-
-;;;;;
-;; Company
-(when (featurep 'shinmera-company)
-  (when (featurep 'shinmera-package)
-    (ensure-installed 'slime-company))
-  (push 'slime-company shinmera-slime-contribs)
-
-  (define-key company-active-map (kbd "\C-n") 'company-select-next)
-  (define-key company-active-map (kbd "\C-p") 'company-select-previous)
-  (define-key company-active-map (kbd "\C-d") 'company-show-doc-buffer)
-  (define-key company-active-map (kbd "M-.") 'company-show-location))
-
-;;;;;
-;; Setup slime
-(slime-setup shinmera-slime-contribs)
+(when window-system
+  (run-with-timer 1 0 'slime))
 
 (provide 'shinmera-lisp)

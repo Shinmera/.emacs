@@ -1,10 +1,14 @@
-(require 'smtpmail)
-(setq user-full-name "Yukari Hafner")
-(setq smtpmail-local-domain "tymoon.eu")
-(setq user-mail-address (concat "shinmera@" smtpmail-local-domain))
-(setq send-mail-function 'smtpmail-send-it)
-(setq smtpmail-smtp-server "smtp.tymoon.eu")
-(setq smtpmail-stream-type 'starttls)
-(setq smtpmail-smtp-service 587)
+(require 'shinmera-straight)
+
+(use-package smtpmail
+  :demand t
+  :custom
+  (user-full-name "Yukari Hafner")
+  (smtpmail-local-domain "tymoon.eu")
+  (user-mail-address "shinmera@tymoon.eu")
+  (send-mail-function 'smtpmail-send-it)
+  (smtpmail-smtp-server "smtp.tymoon.eu")
+  (smtpmail-stream-type 'starttls)
+  (smtpmail-smtp-service 587))
 
 (provide 'shinmera-mail)

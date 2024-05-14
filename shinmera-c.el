@@ -1,21 +1,40 @@
-(require 'shinmera-package)
-(require 'shinmera-keys)
+(require 'shinmera-straight)
 
-(when (featurep 'shinmera-package)
-  (ensure-installed 'irony 'company-irony 'company-c-headers
-                    'cmake-ide 'cmake-mode 'realgud-lldb))
+(use-package irony
+  :commands (irony-mode)
+  :hook
+  (c-mode . irony-mode)
+  (c++-mode . irony-mode))
 
-(add-hook 'c-mode-hook 'irony-mode)
-(add-hook 'c++-mode-hook 'irony-mode)
-(add-hook 'c-mode-hook 'flycheck-mode)
-(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
-
-(when (featurep 'shinmera-company)
-  (add-hook 'c-mode-hook #'company-mode)
-  (add-hook 'c++-mode-hook #'company-mode)
-  (add-hook 'objc-mode-hook #'company-mode)
+(use-package company-irony
+  :demand t
+  :after (company irony)
+  :hook
+  (c-mode . company-mode)
+  (c++-mode . company-mode)
+  (objc-mode . company-mode)
+  :config
   (add-to-list 'company-backends 'company-irony)
   (add-to-list 'company-backends 'company-irony-c-headers))
+
+(use-package company-c-headers
+  :demand t
+  :after (company))
+
+(use-package cmake-ide
+  :commands (cmake-ide-compile cmake-ide-run-cmake))
+
+(use-package cmake-mode
+  :commands (cmake-mode)
+  :mode ("\\'CMakeLists.txt\\'" . cmake-mode))
+
+(use-package realgud
+  :commands (realgud:pdb))
+
+(use-package realgud-lldb
+  :demand t
+  :after realgud
+  :commands (realgud:lldb))
 
 (defun etags (dir-name)
   "Create tags file."

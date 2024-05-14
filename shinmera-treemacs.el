@@ -1,13 +1,18 @@
-(require 'shinmera-package)
-(require 'shinmera-keys)
+(require 'shinmera-straight)
 
-(when (featurep 'shinmera-package)
-  (ensure-installed 'treemacs 'treemacs-projectile
-                    'treemacs-magit 'treemacs-all-the-icons))
+(use-package treemacs
+  :commands treemacs treemacs-find-file
+  :custom (treemacs-width 40)
+  :hook (treemacs-mode . (lambda () (display-line-numbers-mode -1))))
 
-(setq treemacs-width 40)
-(add-hook 'treemacs-mode-hook (lambda () (display-line-numbers-mode -1)))
+(use-package treemacs-projectile
+  :after treemacs projectile)
 
-(define-my-key "C-x d" 'treemacs)
+(use-package treemacs-magit
+  :after treemacs magit)
+
+(use-package treemacs-all-the-icons
+  :after treemacs all-the-icons
+  :config (treemacs-load-theme "all-the-icons"))
 
 (provide 'shinmera-treemacs)

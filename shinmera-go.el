@@ -1,11 +1,11 @@
-(require 'shinmera-package)
+(require 'shinmera-straight)
 
-(when (featurep 'shinmera-package)
-  (ensure-installed 'go-mode 'company-go))
+(use-package go-mode
+  :commands (go-mode)
+  :mode ("\\.go\\'" . go-mode))
 
-(when (featurep 'shinmera-company)
-  (add-hook 'go-mode-hook (lambda ()
-                            (set (make-local-variable 'company-backends) '(company-go))
-                            (company-mode))))
+(use-package company-go
+  :demand t
+  :after (go-mode company))
 
 (provide 'shinmera-go)

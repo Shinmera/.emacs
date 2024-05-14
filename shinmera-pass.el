@@ -1,7 +1,7 @@
-(when (featurep 'shinmera-package)
-  (ensure-installed 'pass))
+(require 'shinmera-straight)
 
-(require 'auth-source-pass)
-(auth-source-pass-enable)
+(use-package pass
+  :demand t
+  :config (auth-source-pass-enable))
 
 (provide 'shinmera-pass)

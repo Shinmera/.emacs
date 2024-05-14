@@ -1,6 +1,11 @@
-(when (featurep 'shinmera-package)
-  (ensure-installed 'alchemist 'elixir-mode))
+(require 'shinmera-straight)
 
-(require 'alchemist)
+(use-package elixir-mode
+  :commands (elixir-mode)
+  :mode ("\\.exs?" . elixir-mode))
+
+(use-package alchemist
+  :demand t
+  :after (elixir-mode))
 
 (provide 'shinmera-elixir)

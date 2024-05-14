@@ -1,32 +1,26 @@
-(require 'shinmera-package)
+(require 'shinmera-straight)
 
-(when (featurep 'shinmera-package)
-  (ensure-installed 'rainbow-mode 'web-mode))
+(use-package web-mode
+  :commands (web-mode)
+  :mode
+  ("\\.htm\\'" . web-mode)
+  ("\\.html\\'" . web-mode)
+  ("\\.xhtml\\'" . web-mode)
+  ("\\.ctml\\'" . web-mode)
+  :custom
+  (web-mode-markup-indent-offset 2)
+  (web-mode-css-indent-offset 4)
+  (web-mode-code-indent-offset 4)
+  (web-mode-style-padding 2)
+  (web-mode-script-padding 2))
 
-;;;;;;
-;; Configure web-mode and other things.
-(autoload 'rainbow-mode "rainbow-mode" "Rainbow colors" t)
+(use-package rainbow-mode
+  :commands (rainbow-mode)
+  :hook (css-mode . rainbow-mode))
 
-(add-hook 'css-mode-hook              #'rainbow-mode)
-
-(add-to-list 'magic-mode-alist        '("<!DOCTYPE html" . web-mode))
-(add-to-list 'auto-mode-alist         '("\\.htm\\'" . web-mode))
-(add-to-list 'auto-mode-alist         '("\\.html\\'" . web-mode))
-(add-to-list 'auto-mode-alist         '("\\.xhtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist         '("\\.ctml\\'" . web-mode))
-
-(defun my-web-mode-hook ()
-  (setq web-mode-markup-indent-offset 2)
-  (setq web-mode-css-indent-offset 4)
-  (setq web-mode-code-indent-offset 4)
-  (setq web-mode-style-padding 2)
-  (setq web-mode-script-padding 2))
-(add-hook 'web-mode-hook  'my-web-mode-hook)
-
-;;;;;;
-;; LASS support
-(add-to-list 'load-path "~/Projects/cl/LASS/")
-(add-to-list 'auto-mode-alist '("\\.lass\\'" . lass-mode))
-(autoload 'lass-mode "lass" "Lass Support" t)
+(use-package lass
+  :commands (lass-mode)
+  :straight (:type git :repo "https://github.com/shinmera/LASS")
+  :mode ("\\.lass\\'" . lass-mode))
 
 (provide 'shinmera-web)

@@ -1,8 +1,7 @@
-(ensure-installed 'jdee)
+(require 'shinmera-straight)
 
-(autoload 'jdee-mode "jdee" "JDE mode" t)
-
-(setq auto-mode-alist
-      (append '(("\\.java\\'" . jdee-mode)) auto-mode-alist))
+(use-package jdee
+  :commands (jdee-mode)
+  :mode ("\\.java\\'" . jdee-mode))
 
 (provide 'shinmera-java)

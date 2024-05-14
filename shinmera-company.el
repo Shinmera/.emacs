@@ -1,14 +1,28 @@
-(when (featurep 'shinmera-package)
-  (ensure-installed 'company 'company-quickhelp))
+(require 'shinmera-straight)
 
-(require 'company)
-(company-quickhelp-mode 1)
+(use-package company
+  :defer 0.5
+  :bind (:map company-active-map
+              ("<up>" . company-select-previous)
+              ("<down>" . company-select-next)
+              ("\C-n" . company-select-next)
+              ("\C-p" . company-select-previous)
+              ("\C-d" . company-show-doc-buffer)
+              ("M-." . company-show-location))
+  :config (global-company-mode 1))
 
-(add-hook 'after-init-hook 'global-company-mode)
+(use-package company-posframe
+  :demand t
+  :after (company)
+  :custom
+  (company-posframe-quickhelp-delay 0.1)
+  (company-posframe-show-metadata t)
+  :config (company-posframe-mode 1))
 
-(setq company-quickhelp-delay 0.7)
-
-(define-key company-active-map (kbd "<up>") 'company-select-previous)
-(define-key company-active-map (kbd "<down>") 'company-select-next)
+;; (use-package company-quickhelp
+;;   :demand t
+;;   :after (company)
+;;   :custom (company-quickhelp-delay 0.7)
+;;   :config (company-quickhelp-mode 1))
 
 (provide 'shinmera-company)

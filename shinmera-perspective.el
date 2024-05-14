@@ -1,10 +1,9 @@
-(when (featurep 'shinmera-package)
-  (ensure-installed 'perspective))
+(require 'shinmera-straight)
 
-(require 'perspective)
-
-(global-set-key (kbd "C-x C-b") 'persp-list-buffers)
-(customize-set-variable 'persp-mode-prefix-key (kbd "C-c M-p"))
-(persp-mode)
+(use-package perspective
+  :commands persp-list-buffers
+  :bind ("C-x C-b" . persp-list-buffers)
+  :custom (persp-mode-prefix-key (kbd "C-c M-p"))
+  :config (persp-mode))
 
 (provide 'shinmera-perspective)

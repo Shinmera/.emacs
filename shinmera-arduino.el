@@ -1,26 +1,22 @@
-(require 'shinmera-package)
+(require 'shinmera-straight)
 
-(when (featurep 'shinmera-package)
-  (ensure-installed 'arduino-mode 'arduino-cli-mode 'company-arduino))
+(use-package arduino-mode
+  :commands (arduino-mode)
+  :hook (arduino-mode . irony-mode)
+  :mode ("\\.ino\\'" . arduino-mode)
 
-(require 'flycheck-arduino)
+(use-package arduino-cli-mode
+  :demand t
+  :after (arduino-mode))
 
-;; Configuration for company-c-headers.el
-;; The `company-arduino-append-include-dirs' function appends
-;; Arduino's include directories to the default directories
-;; if `default-directory' is inside `company-arduino-home'. Otherwise just
-;; returns the default directories.
-;; Please change the default include directories accordingly.
-(defun my-company-c-headers-get-system-path ()
-  "Return the system include path for the current buffer."
-  (let ((default '("/usr/include/" "/usr/local/include/")))
-    (company-arduino-append-include-dirs default t)))
+(use-package company-arduino
+  :demand t
+  :after (company arduino-mode)
+  :hook (irony-mode . company-arduino-turn-on))
 
-(setq company-c-headers-path-system 'my-company-c-headers-get-system-path)
+(use-package flycheck-arduino
+  :demand t
+  :after (flycheck arduino-mode)
+  :hook (arduino-mode . flycheck-arduino-setup))
 
-(when (featurep 'shinmera-company)
-  (add-hook 'irony-mode-hook 'company-arduino-turn-on))
-
-(add-hook 'arduino-mode-hook #'flycheck-arduino-setup)
-(add-hook 'arduino-mode-hook 'irony-mode)
 (provide 'shinmera-arduino)

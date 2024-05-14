@@ -1,17 +1,16 @@
-(require 'shinmera-package)
+(require 'shinmera-straight)
 
-(when (featurep 'shinmera-package)
-  (ensure-installed 'js2-mode 'xref-js2 'js2-refactor))
+(use-package js2-mode
+  :commands (js2-mode js2-minor-mode)
+  :mode ("\\.js\\'" . js2-mode)
+  :hook
+  (js-mode . js2-minor-mode)
+  (js2-mode . (lambda () (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))
+  :bind (:map js-mode-map ("M-." . nil))
+  :config (font-lock-add-keywords 'js2-mode '(("self" . font-lock-constant-face))))
 
-(require 'js2-mode)
-(require 'xref-js2)
-
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-(define-key js-mode-map (kbd "M-.") nil)
-(font-lock-add-keywords 'js-mode '(("self" . font-lock-constant-face)))
-(font-lock-add-keywords 'js2-mode '(("self" . font-lock-constant-face)))
-
-(add-hook 'js2-mode-hook (lambda ()
-                           (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))
+(use-package xref-js2
+  :demand t
+  :after (js2-mode))
 
 (provide 'shinmera-js)
