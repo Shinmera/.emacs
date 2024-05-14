@@ -20,6 +20,7 @@
                            ("WTF" . "#F8240E")))
   (magit-todos-keywords-list (mapcar #'car hl-todo-keyword-faces))
   (magit-todos-auto-group-items 50)
+  (magit-todos-exclude-globs '(".git/" "docs/"))
   :config
   (magit-todos-mode))
 
