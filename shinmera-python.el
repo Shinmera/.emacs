@@ -4,13 +4,9 @@
   :commands (python-mode)
   :mode ("\\.py\\'" . python-mode))
 
-(use-package flycheck-pylint
+(use-package flycheck-pyflakes
   :demand t
   :after (python-mode flycheck)
   :hook (python-mode . flycheck-mode))
-
-(use-package flycheck-pyflakes
-  :demand t
-  :after (python-mode flycheck))
 
 (provide 'shinmera-python)
