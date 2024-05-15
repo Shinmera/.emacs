@@ -1,3 +1,4 @@
+;; -*- mode: elisp; lexical-binding: t; -*-
 (require 'shinmera-straight)
 
 (add-to-list 'load-path (file-name-directory load-file-name))
@@ -20,6 +21,7 @@
   :custom (shift-select-mode nil))
 
 (use-package doom-themes
+  :if window-system
   :defer t
   :config
   (doom-themes-visual-bell-config)
@@ -30,6 +32,7 @@
   :config (doom-modeline-mode 1))
 
 (use-package openwith
+  :if window-system
   :demand t
   :custom
   (openwith-associations '(("\\.png\\'" "geeqie" (file))
@@ -55,6 +58,7 @@
   :custom (olivetti-body-width 100))
 
 (use-package centaur-tabs
+  :if window-system
   :defer 1
   :after all-the-icons
   :custom
