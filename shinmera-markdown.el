@@ -5,6 +5,8 @@
   :mode
   ("\\.md\\'" . markdown-mode)
   ("\\.markdown\\'" . markdown-mode)
-  :hook (markless-mode . olivetti-mode))
+  :hook
+  (markless-mode . olivetti-mode)
+  (gfm-mode . olivetti-mode))
 
 (provide 'shinmera-markdown)
