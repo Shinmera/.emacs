@@ -4,5 +4,6 @@
 (require 'shinmera-straight)
 (require 'shinmera-modules)
 
-(setq debug-on-error nil)
+(define-hook after-init-hook ()
+  (setq debug-on-error nil))
 (provide 'shinmera)
