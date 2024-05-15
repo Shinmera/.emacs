@@ -82,9 +82,11 @@
   (projectile-mode +1))
 
 (use-package all-the-icons
+  :if window-system
   :demand t)
 
 (use-package all-the-icons-dired
+  :if window-system
   :defer 1
   :after all-the-icons
   :hook (dired-mode . all-the-icons-dired-mode))
