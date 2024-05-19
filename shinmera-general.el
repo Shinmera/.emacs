@@ -106,6 +106,20 @@
 (use-package ag
   :commands (ag))
 
+(use-package persistent-soft
+  :if window-system
+  :demand t)
+
+(use-package unicode-fonts
+  :if window-system
+  :demand t
+  :after persistent-soft
+  :config
+  (unicode-fonts-setup)
+  (custom-set-faces
+   `(default ((t (:family "Noto Sans Mono" :height 100))))
+   `(variable-pitch ((t (:family "Noto Sans" :height 100))))))
+
 (ido-mode 1)
 (ido-everywhere 1)
 (show-paren-mode 1)
@@ -148,8 +162,7 @@
 
 (when window-system
   (define-hook emacs-startup-hook ()
-    (load-theme 'doom-molokai t))
-  (set-frame-font "Noto Sans Mono-10" nil t))
+    (load-theme 'doom-molokai t)))
 
 (when (eq system-type 'darwin)
   (setq mac-command-modifier 'control)
