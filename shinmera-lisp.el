@@ -37,14 +37,14 @@
   ("\\.lisp\\'" . common-lisp-mode)
   ("\\.asd\\'" . common-lisp-mode)
   :custom
-  (slime-contribs '(slime-autodoc slime-asdf slime-autodoc
-                                  slime-cl-indent slime-compiler-notes-tree
-                                  slime-fontifying-fu slime-fuzzy
-                                  slime-hyperdoc slime-indentation
-                                  slime-macrostep slime-mdot-fu
-                                  slime-quicklisp slime-references
-                                  slime-repl slime-sprof slime-trace-dialog
-                                  slime-tramp slime-xref-browser))
+  (slime-contribs '(slime-asdf slime-autodoc
+                    slime-cl-indent slime-compiler-notes-tree
+                    slime-fontifying-fu slime-fuzzy
+                    slime-hyperdoc slime-indentation
+                    slime-macrostep slime-mdot-fu
+                    slime-quicklisp slime-references
+                    slime-repl slime-sprof slime-trace-dialog
+                    slime-tramp slime-xref-browser))
   (slime-completion-at-point-functions '(slime-filename-completion slime-fuzzy-complete-symbol))
   (slime-net-coding-system 'utf-8-unix)
   (slime-startup-animation nil)
@@ -104,9 +104,6 @@
 (use-package slime-company
   :demand t
   :after (slime company)
-  :custom
-  (slime-company-completion 'fuzzy)
-  (slime-company-after-completion 'slime-company-just-one-space)
   :hook
   ((slime-mode slime-repl-mode sldb-mode) . slime-company-maybe-enable))
 
