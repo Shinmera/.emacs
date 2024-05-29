@@ -1,6 +1,7 @@
 (setq debug-on-error t)
 
 (require 'shinmera-faststart)
+(require 'shinmera-functions)
 (require 'shinmera-straight)
 (require 'shinmera-modules)
 
