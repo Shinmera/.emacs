@@ -4,7 +4,7 @@
 
 (defvar shinmera-global-map (make-keymap))
 (define-minor-mode shinmera-global-minor-mode
-  "" :linit-value t :lighter " Shinmera" :keymap 'shinmera-global-map)
+  "" :init-value t :lighter " Shinmera" :keymap shinmera-global-map)
 
 (shinmera-global-minor-mode 1)
 (define-hook minibuffer-setup-hook ()
@@ -18,7 +18,6 @@
 
 (ad-activate 'load)
 
-(require 'shinmera-functions)
 (require 'shinmera-straight)
 (require 'shinmera-modules)
 

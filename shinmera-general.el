@@ -135,6 +135,25 @@
    `(default ((t (:family "Noto Sans Mono" :height 100))))
    `(variable-pitch ((t (:family "Noto Sans" :height 100))))))
 
+(use-package crux
+  :commands (sudo
+             crux-reopen-as-root
+             crux-transpose-windows
+             crux-rename-file-and-buffer
+             crux-delete-file-and-buffer
+             crux-recentf-find-file
+             crux-open-with)
+  :bind (:map shinmera-global-map
+              ("C-c o" . crux-open-with)
+              ("C-c f" . crux-recentf-find-file)
+              ("C-c k" . crux-delete-file-and-buffer)
+              ("C-c r" . crux-rename-file-and-buffer)
+              ("C-x 4 t" . crux-transpose-windows))
+  :config
+  (defun sudo ()
+    (interactive)
+    (crux-reopen-as-root)))
+
 (ido-mode 1)
 (ido-everywhere 1)
 (show-paren-mode 1)
@@ -199,5 +218,22 @@
                   (indent-region (region-beginning) (region-end) nil))))))
 
 (define-key shinmera-global-map (kbd "C-S-q") 'quoted-insert)
+
+;; Adjust PATH to be more generally suitable
+(defun add-to-path (&rest things)
+  (cond ((eql system-type 'windows-nt)
+         (setenv "PATH" (concat (mapconcat (lambda (a) (replace-regexp-in-string "/" "\\\\" a)) things ";")
+                                ";" (getenv "PATH"))))
+        (t
+         (setenv "PATH" (concat (mapconcat 'identity things ":")
+                                ":" (getenv "PATH")))))
+  (setq exec-path (append exec-path things)))
+
+(when (eq system-type 'darwin)
+  (add-to-path "/usr/local/bin")
+  (add-to-path "/opt/local/bin"))
+
+(when (eq system-type 'linux)
+  (add-to-path "/usr/local/bin"))
 
 (provide 'shinmera-general)
