@@ -3,7 +3,9 @@
 (use-package treemacs
   :commands treemacs treemacs-find-file
   :custom (treemacs-width 40)
-  :hook (treemacs-mode . (lambda () (display-line-numbers-mode -1))))
+  :hook (treemacs-mode . (lambda () (display-line-numbers-mode -1)))
+  :bind (:map shinmera-global-map
+              ("C-x d" . treemacs)))
 
 (use-package treemacs-projectile
   :after treemacs projectile)

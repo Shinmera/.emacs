@@ -21,6 +21,8 @@
 (use-package slime
   :commands (slime slime-connect common-lisp-mode)
   :bind
+  (:map slime-mode-map
+        ("C-c s" . slime-selector))
   (:map slime-xref-mode-map
         ("n" . nil) ([remap next-line] . nil)
         ("p" . nil) ([remap previous-line] . nil))

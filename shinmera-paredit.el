@@ -5,7 +5,10 @@
   :commands (enable-paredit-mode paredit-mode)
   :bind (:map paredit-mode-map
               ("C-M-p" . nil)
-              ("C-M-n" . nil))
+              ("C-M-n" . nil)
+              ("M-g" . raise-sexp)
+              ("M-s" . paredit-splice-sexp-killing-backward)
+              ("M-S" . paredit-splice-sexp-killing-forward))
   :hook
   (emacs-lisp-mode . enable-paredit-mode)
   (lisp-mode . enable-paredit-mode)

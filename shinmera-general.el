@@ -14,11 +14,19 @@
         `((".*" ,(no-littering-expand-var-file-name "auto-save/") t))))
 
 (use-package multiple-cursors
-  :commands (mc/mark-next-like-this mc/mark-previous-like-this mc/mark-all-like-this))
+  :commands (mc/mark-next-like-this mc/mark-previous-like-this mc/mark-all-like-this)
+  :bind (:map shinmera-global-map
+              ("C-S-f" . mc/mark-next-like-this)
+              ("C-S-b" . mc/mark-previous-like-this)
+              ("C-S-a" . mc/mark-all-like-this)
+              ("C-M-S-f" . mc/unmark-next-like-this)
+              ("C-M-S-b" . mc/unmark-previous-like-this)))
 
 (use-package expand-region
   :commands (er/expand-region)
-  :custom (shift-select-mode nil))
+  :custom (shift-select-mode nil)
+  :bind (:map shinmera-global-map
+              ("C-q" . er/expand-region)))
 
 (use-package doom-themes
   :if window-system
@@ -44,14 +52,21 @@
   :config (openwith-mode t))
 
 (use-package smex
-  :demand t
-  :config (smex-initialize))
+  :commands (smex smex-major-mode-commands)
+  :config (smex-initialize)
+  :bind (:map shinmera-global-map
+              ("M-x" . smex)
+              ("M-X" . smex-major-mode-commands)))
 
 (use-package fic-mode
   :defer 1)
 
 (use-package helpful
-  :defer 1)
+  :commands (helpful-callable helpful-variable helpful-key)
+  :bind (:map shinmera-global-map
+              ("C-h f" . helpful-callable)
+              ("C-h v" . helpful-variable)
+              ("C-h k" . helpful-key)))
 
 (use-package olivetti
   :commands olivetti-mode
@@ -182,5 +197,7 @@
                                      plain-tex-mode))
                 (let ((mark-even-if-inactive transient-mark-mode))
                   (indent-region (region-beginning) (region-end) nil))))))
+
+(define-key shinmera-global-map (kbd "C-S-q") 'quoted-insert)
 
 (provide 'shinmera-general)
