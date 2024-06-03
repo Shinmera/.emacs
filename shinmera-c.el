@@ -14,7 +14,12 @@
   (c++-mode . company-mode)
   (objc-mode . company-mode)
   :config
-  (add-to-list 'company-backends 'company-irony)
+  (add-to-list 'company-backends 'company-irony))
+
+(use-package company-irony-c-headers
+  :demand t
+  :after (company-irony)
+  :config
   (add-to-list 'company-backends 'company-irony-c-headers))
 
 (use-package company-c-headers
