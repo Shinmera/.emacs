@@ -43,4 +43,9 @@
   :after (company auctex)
   :config (add-to-list 'company-backends 'company-bibtex))
 
+(use-package citar
+  :demand t
+  :after (auctex)
+  :hook (LaTeX-mode . citar-capf-setup))
+
 (provide 'shinmera-tex)
