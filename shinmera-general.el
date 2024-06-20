@@ -163,6 +163,8 @@
 (global-display-line-numbers-mode 1)
 (global-font-lock-mode 1)
 (global-auto-revert-mode 1)
+(if (fboundp 'pixel-scroll-precision-mode)
+    (pixel-scroll-precision-mode))
 
 (setq-default indent-tabs-mode nil)
 (setq-default buffer-file-coding-system 'utf-8-unix)
@@ -170,6 +172,7 @@
 (setq-default dired-listing-switches "-alh")
 (setq inhibit-startup-screen t)
 (setq inhibit-startup-message t)
+(setq inhibit-startup-echo-area-message (user-login-name))
 (setq custom-safe-themes t)
 (setq create-lockfiles nil)
 (setq backup-by-copying t)
@@ -190,11 +193,15 @@
 (setq ido-create-new-buffer 'always)
 (setq ido-use-filename-at-point 'nil)
 (setq ido-ignore-extensions t)
+(setq byte-compile-warnings '(not obsolete))
+(setq warning-suppress-log-types '((comp) (bytecomp)))
+(setq native-comp-async-report-warnings-errors 'silent)
 (put 'upcase-region 'disabled nil)
 (make-variable-buffer-local 'compile-command)
 (add-hook 'prog-mode-hook 'subword-mode)
 
 (when window-system
+  (context-menu-mode)
   (define-hook emacs-startup-hook ()
     (load-theme 'doom-molokai t)))
 
