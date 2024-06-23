@@ -2,9 +2,12 @@
 (require 'cl-lib)
 
 (defvar shinmera-module-list
+  '(:general :spell :pass :mail :perspective :treemacs :company :flycheck :magit :paredit :lisp :tex :web :js :c :java :shell :glsl :elixir :arduino :go :python :misc :vim :native))
+
+(defvar shinmera-default-module-list
   '(:general :spell :pass :mail :perspective :treemacs :company :flycheck :magit :paredit :lisp :tex :web :js :c :java :shell :glsl :elixir :arduino :go :python :misc))
 
-(defcustom shinmera-modules (copy-sequence shinmera-module-list)
+(defcustom shinmera-modules (copy-sequence shinmera-default-module-list)
   "Which modules to load on startup"
   :type `(set ,@(cl-loop for module in shinmera-module-list
                          collect `(const ,module)))
