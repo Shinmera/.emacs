@@ -72,6 +72,25 @@
   :commands olivetti-mode
   :custom (olivetti-body-width 100))
 
+(use-package nerd-icons
+  :if window-system
+  :demand t)
+
+(use-package all-the-icons
+  :if window-system
+  :demand t)
+
+(use-package all-the-icons-dired
+  :if window-system
+  :defer 1
+  :after all-the-icons
+  :hook (dired-mode . all-the-icons-dired-mode))
+
+(use-package all-the-icons-nerd-fonts
+  :if window-system
+  :defer 1
+  :after all-the-icons)
+
 (use-package centaur-tabs
   :if window-system
   :defer 1
@@ -95,16 +114,6 @@
   :config
   (projectile-save-known-projects)
   (projectile-mode +1))
-
-(use-package all-the-icons
-  :if window-system
-  :demand t)
-
-(use-package all-the-icons-dired
-  :if window-system
-  :defer 1
-  :after all-the-icons
-  :hook (dired-mode . all-the-icons-dired-mode))
 
 (use-package server
   :demand t
@@ -132,8 +141,8 @@
   :config
   (unicode-fonts-setup)
   (custom-set-faces
-   `(default ((t (:family "Noto Sans Mono" :height 100))))
-   `(variable-pitch ((t (:family "Noto Sans" :height 100))))))
+   '(default ((t (:family "Noto Sans Mono" :height 100))))
+   '(variable-pitch ((t (:family "Noto Sans" :height 100))))))
 
 (use-package crux
   :commands (sudo
