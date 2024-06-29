@@ -43,4 +43,8 @@
 (use-package nginx-mode
   :commands nginx-mode)
 
+(use-package gdscript-mode
+  :commands (gdscript-mode)
+  :mode ("\\.gd\\'" . gdscript-mode))
+
 (provide 'shinmera-misc)
