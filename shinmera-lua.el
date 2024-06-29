@@ -1,4 +1,4 @@
-(require shinmera-straight)
+(require 'shinmera-straight)
 
 (use-package lua-mode
   :commands (lua-mode)
