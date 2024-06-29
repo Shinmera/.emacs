@@ -69,6 +69,10 @@ Each module is made with a specific goal:
   `C-c M-p` Perspective prefix
 - python  
   Support for editing Python source files.
+- lua  
+  Support for editing Lua source files.
+- rust  
+  Support for editing Rust projects.
 - shell  
   Enhancements for Emacs' built-in shells.
 - spell  
