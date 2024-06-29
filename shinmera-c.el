@@ -41,6 +41,10 @@
   :after realgud
   :commands (realgud:lldb))
 
+(use-package csharp-mode
+  :commands (csharp-mode)
+  :mode ("\\.cs\\'" . csharp-mode))
+
 (defun etags (dir-name)
   "Create tags file."
   (interactive "DDirectory: ")

@@ -5,4 +5,8 @@
   :mode
   ("\\.rs\\'" . rustic-mode))
 
+(use-package lsp-mode
+  :demand t
+  :after (rustic))
+
 (provide 'shinmera-rust)
