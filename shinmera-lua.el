@@ -14,4 +14,8 @@
                                     company-etags
                                     company-dabbrev-code)))))
 
+(use-package flymake-lua
+  :demand t
+  :after (lua-mode))
+
 (provide 'shinmera-lua)
