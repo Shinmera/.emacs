@@ -163,6 +163,16 @@
     (interactive)
     (crux-reopen-as-root)))
 
+(use-package hl-todo
+  :custom
+  (hl-todo-keyword-faces '(("KLUDGE" . "#d0bf8f")
+                           ("HACK" . "#d0bf8f")
+                           ("TODO" . "#D98C32")
+                           ("FIXME" . "#EF681F")
+                           ("WTF" . "#F8240E")))
+  :config
+  (global-hl-todo-mode))
+
 (ido-mode 1)
 (ido-everywhere 1)
 (show-paren-mode 1)
