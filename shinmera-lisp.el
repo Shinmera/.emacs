@@ -107,7 +107,9 @@
   :demand t
   :after (slime company)
   :hook
-  ((slime-mode slime-repl-mode sldb-mode) . slime-company-maybe-enable))
+  ((slime-mode slime-repl-mode sldb-mode) . slime-company-maybe-enable)
+  :custom
+  (slime-company-completion 'fuzzy))
 
 (when window-system
   (run-with-timer 1 0 'slime))
