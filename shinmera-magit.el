@@ -28,4 +28,7 @@
 
 (use-package git-modes)
 
+(use-package blamer
+  :commands blamer-mode)
+
 (provide 'shinmera-magit)
