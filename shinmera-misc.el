@@ -47,4 +47,8 @@
   :commands (gdscript-mode)
   :mode ("\\.gd\\'" . gdscript-mode))
 
+(use-package json-mode
+  :commands (json-mode)
+  :mode ("\\.json\\'" . json-mode))
+
 (provide 'shinmera-misc)
