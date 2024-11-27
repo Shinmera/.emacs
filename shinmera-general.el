@@ -51,6 +51,10 @@
                            ("\\.pdf\\'" "okular" (file))))
   :config (openwith-mode t))
 
+(use-package dirvish
+  :commands (dirvish dirvish-dwim dired dired-jump)
+  :config (dirvish-override-dired-mode))
+
 (use-package smex
   :commands (smex smex-major-mode-commands)
   :config (smex-initialize)
