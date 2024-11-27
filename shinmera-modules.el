@@ -2,7 +2,7 @@
 (require 'cl-lib)
 
 (defvar shinmera-module-list
-  '(:general :spell :pass :mail :perspective :treemacs :company :flycheck :magit :paredit :lisp :tex :web :js :c :java :shell :glsl :elixir :arduino :go :python :lua :rust :misc :vim :native))
+  '(:general :spell :pass :mail :perspective :treemacs :company :flycheck :magit :paredit :lisp :tex :web :js :c :java :shell :glsl :elixir :arduino :go :python :lua :rust :misc :vim :native :treesitter))
 
 (defvar shinmera-default-module-list
   '(:general :spell :pass :mail :perspective :treemacs :company :flycheck :magit :paredit :lisp :tex :web :js :c :java :shell :glsl :elixir :arduino :go :python :lua :rust :misc))
