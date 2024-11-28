@@ -5,7 +5,9 @@
 
 (use-package better-defaults
   :straight (better-defaults :type git :host nil :repo "https://git.sr.ht/~technomancy/better-defaults")
-  :demand t)
+  :demand t
+  :bind (:map global-map
+              ("C-z" . nil)))
 
 (use-package no-littering
   :demand t
