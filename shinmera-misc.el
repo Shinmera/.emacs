@@ -51,4 +51,11 @@
   :commands (json-mode)
   :mode ("\\.json\\'" . json-mode))
 
+(use-package sql-indent
+  :config
+  (sql-set-product 'postgres)
+  (let* ((postgres (alist-get 'postgres sql-product-alist))
+         (syntax (plist-get postgres :syntax-alist)))
+    (plist-put postgres :syntax-alist (cons '(?\" . "\"") syntax))))
+
 (provide 'shinmera-misc)
