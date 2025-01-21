@@ -45,12 +45,12 @@
   :if window-system
   :demand t
   :custom
-  (openwith-associations '(("\\.png\\'" "geeqie" (file))
-                           ("\\.jpg\\'" "geeqie" (file))
-                           ("\\.jpeg\\'" "geeqie" (file))
-                           ("\\.gif\\'" "geeqie" (file))
-                           ("\\.svg\\'" "geeqie" (file))
-                           ("\\.pdf\\'" "okular" (file))))
+  (openwith-associations '(("\\.png\\'" "xdg-open" (file))
+                           ("\\.jpg\\'" "xdg-open" (file))
+                           ("\\.jpeg\\'" "xdg-open" (file))
+                           ("\\.gif\\'" "xdg-open" (file))
+                           ("\\.svg\\'" "xdg-open" (file))
+                           ("\\.pdf\\'" "xdg-open" (file))))
   :config (openwith-mode t))
 
 (use-package dirvish
