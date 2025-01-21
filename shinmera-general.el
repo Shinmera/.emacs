@@ -54,7 +54,8 @@
   :config (openwith-mode t))
 
 (use-package dirvish
-  :commands (dirvish dirvish-dwim dired dired-jump)
+  :demand t
+  :defer 2
   :config (dirvish-override-dired-mode))
 
 (use-package smex
