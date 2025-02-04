@@ -180,6 +180,10 @@
   :config
   (global-hl-todo-mode))
 
+(use-package stillness-mode
+  :demand t
+  :straight (stillness-mode :host github :repo "neeasade/stillness-mode.el" :branch "main"))
+
 (ido-mode 1)
 (ido-everywhere 1)
 (show-paren-mode 1)
