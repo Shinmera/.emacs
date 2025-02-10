@@ -6,6 +6,7 @@
   (git-commit-fill-column 9999)
   (git-commit-summary-max-length 9999)
   (git-commit-finish-query-functions nil)
+  (magit-format-file-function #'magit-format-file-all-the-icons)
   (magit-delete-by-moving-to-trash nil)
   (magit-no-confirm '(stage-all-changes unstage-all-changes)))
 
