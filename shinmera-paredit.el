@@ -7,6 +7,7 @@
               ("C-M-p" . nil)
               ("C-M-n" . nil)
               ("M-g" . raise-sexp)
+              ("C-M-?" . paredit-convolute-sexp)
               ("M-s" . paredit-splice-sexp-killing-backward)
               ("M-S" . paredit-splice-sexp-killing-forward))
   :hook
