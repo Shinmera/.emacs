@@ -45,12 +45,12 @@
   :if window-system
   :demand t
   :custom
-  (openwith-associations '(("\\.png\\'" "xdg-open" (file))
-                           ("\\.jpg\\'" "xdg-open" (file))
-                           ("\\.jpeg\\'" "xdg-open" (file))
-                           ("\\.gif\\'" "xdg-open" (file))
-                           ("\\.svg\\'" "xdg-open" (file))
-                           ("\\.pdf\\'" "xdg-open" (file))))
+  (openwith-associations
+   (cl-loop for ext in '("png" "jpg" "jpeg" "gif" "svg"
+                         "pdf" "blend" "ttf" "kra"
+                         "wav" "mp3" "opus" "oga" "qoa" "flac"
+                         "ogv" "mp4" "mkv" "avi")
+            collect (list (concat "\\." (regexp-opt ext) "\\'") "xdg-open" '(file))))
   :config (openwith-mode t))
 
 (use-package dirvish
