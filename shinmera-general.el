@@ -50,7 +50,7 @@
                          "pdf" "blend" "ttf" "kra"
                          "wav" "mp3" "opus" "oga" "qoa" "flac"
                          "ogv" "mp4" "mkv" "avi")
-            collect (list (concat "\\." (regexp-opt ext) "\\'") "xdg-open" '(file))))
+            collect (list (concat "\\." ext "\\'") "xdg-open" '(file))))
   :config (openwith-mode t))
 
 (use-package dirvish
