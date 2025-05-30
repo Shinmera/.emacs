@@ -6,7 +6,9 @@
 
 (use-package yaml-mode
   :commands (yaml-mode)
-  :mode ("\\.yml\\'" . yaml-mode))
+  :mode
+  ("\\.yml\\'" . yaml-mode)
+  ("\\.ksy\\'" . yaml-mode))
 
 (use-package markdown-mode
   :commands (markdown-mode)
