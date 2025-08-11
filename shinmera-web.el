@@ -20,7 +20,7 @@
 
 (use-package lass
   :commands (lass-mode)
-  :straight (:type git :repo "https://github.com/shinmera/LASS")
+  :straight (:type git :repo "https://shinmera.com/project/LASS")
   :mode ("\\.lass\\'" . lass-mode))
 
 (provide 'shinmera-web)

@@ -4,10 +4,10 @@
 1. Clone the repository into your emacs.d:
    * Unix:  
      `mkdir -p ~/.emacs.d/shinmera`  
-     `git clone https://github.com/Shinmera/.emacs.git ~/.emacs.d/shinmera`
+     `git clone https://shinmera.com/project/.emacs.git ~/.emacs.d/shinmera`
    * Windows:  
      `mkdir -p ~/AppData/Roaming/.emacs.d/shinmera`  
-     `git clone https://github.com/Shinmera/.emacs.git ~/AppData/Roaming/.emacs.d/shinmera`
+     `git clone https://shinmera.com/project/.emacs.git ~/AppData/Roaming/.emacs.d/shinmera`
 2. Make emacs load the package:
    * Unix:  
      `echo "(add-to-list 'load-path \"~/.emacs.d/shinmera/\")" >> ~/.emacs`  
